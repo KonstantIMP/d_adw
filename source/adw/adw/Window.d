@@ -93,6 +93,23 @@ public class Window : DGtkWindow
 		super(cast(GtkWindow*)adwWindow, ownedRef);
 	}
 
+	/**
+	 * Sets the child widget of @self.
+	 *
+	 * This method should always be used instead of [method@Gtk.Window.set_child].
+	 *
+	 * Params:
+	 *     child = the child widget
+	 *
+	 * Since: 1.0
+	 */
+	public override void setChild(Widget child)
+	{
+		adw_window_set_child(adwWindow, (child is null) ? null : child.getWidgetStruct());
+	}
+
+	/**
+	 */
 
 	/** */
 	public static GType getType()
@@ -140,20 +157,5 @@ public class Window : DGtkWindow
 		}
 
 		return ObjectG.getDObject!(Widget)(cast(GtkWidget*) __p);
-	}
-
-	/**
-	 * Sets the child widget of @self.
-	 *
-	 * This method should always be used instead of [method@Gtk.Window.set_child].
-	 *
-	 * Params:
-	 *     child = the child widget
-	 *
-	 * Since: 1.0
-	 */
-	public void setChild(Widget child)
-	{
-		adw_window_set_child(adwWindow, (child is null) ? null : child.getWidgetStruct());
 	}
 }

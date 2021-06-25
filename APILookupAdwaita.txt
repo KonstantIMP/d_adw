@@ -1,4 +1,88 @@
 wrap: adw
 file: Adw-1.gir
 
+# Fix generation errors
 
+struct: ActionRow
+noCode: activate
+code: start
+    /**
+	 * Activates @self.
+	 *
+	 * Since: 1.0
+	 */
+	public override bool activate()
+	{
+		adw_action_row_activate(adwActionRow);
+        return true;
+	}
+code: end
+
+struct: ApplicationWindow
+noCode: set_child
+code: start
+    /**
+	 * Sets the child widget of @self.
+	 *
+	 * This method should always be used instead of [method@Gtk.Window.set_child].
+	 *
+	 * Params:
+	 *     child = the child widget
+	 *
+	 * Since: 1.0
+	 */
+	public override void setChild(Widget child)
+	{
+		adw_application_window_set_child(adwApplicationWindow, (child is null) ? null : child.getWidgetStruct());
+	}
+code: end
+
+struct: Window
+noCode: set_child
+code: start
+    /**
+	 * Sets the child widget of @self.
+	 *
+	 * This method should always be used instead of [method@Gtk.Window.set_child].
+	 *
+	 * Params:
+	 *     child = the child widget
+	 *
+	 * Since: 1.0
+	 */
+	public override void setChild(Widget child)
+	{
+		adw_window_set_child(adwWindow, (child is null) ? null : child.getWidgetStruct());
+	}
+code: end
+
+struct: ValueObject
+noCode: new_string
+code: start
+    /**
+	 * Creates a new `AdwValueObject` from a string.
+	 *
+	 * This is a convenience method to create a `AdwValueObject` that stores a
+	 * string.
+	 *
+	 * Params:
+	 *     string_ = the string to store
+	 *
+	 * Returns: the newly created `AdwValueObject`
+	 *
+	 * Since: 1.0
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(const string string_)
+	{
+		auto __p = adw_value_object_new_string(Str.toStringz(string_));
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_string");
+		}
+
+		this(cast(AdwValueObject*) __p, true);
+	}
+code: end

@@ -91,6 +91,19 @@ public class ActionRow : PreferencesRow
 		super(cast(AdwPreferencesRow*)adwActionRow, ownedRef);
 	}
 
+	/**
+	 * Activates @self.
+	 *
+	 * Since: 1.0
+	 */
+	public override bool activate()
+	{
+		adw_action_row_activate(adwActionRow);
+		return true;
+	}
+
+	/**
+	 */
 
 	/** */
 	public static GType getType()
@@ -117,16 +130,6 @@ public class ActionRow : PreferencesRow
 		}
 
 		this(cast(AdwActionRow*) __p);
-	}
-
-	/**
-	 * Activates @self.
-	 *
-	 * Since: 1.0
-	 */
-	public override void activate()
-	{
-		adw_action_row_activate(adwActionRow);
 	}
 
 	/**

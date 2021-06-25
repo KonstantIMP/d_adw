@@ -63,6 +63,35 @@ public class ValueObject : ObjectG
 		super(cast(GObject*)adwValueObject, ownedRef);
 	}
 
+	/**
+	 * Creates a new `AdwValueObject` from a string.
+	 *
+	 * This is a convenience method to create a `AdwValueObject` that stores a
+	 * string.
+	 *
+	 * Params:
+	 *     string_ = the string to store
+	 *
+	 * Returns: the newly created `AdwValueObject`
+	 *
+	 * Since: 1.0
+	 *
+	 * Throws: ConstructionException GTK+ fails to create the object.
+	 */
+	public this(const string string_)
+	{
+		auto __p = adw_value_object_new_string(Str.toStringz(string_));
+
+		if(__p is null)
+		{
+			throw new ConstructionException("null returned by new_string");
+		}
+
+		this(cast(AdwValueObject*) __p, true);
+	}
+
+	/**
+	 */
 
 	/** */
 	public static GType getType()
@@ -89,33 +118,6 @@ public class ValueObject : ObjectG
 		if(__p is null)
 		{
 			throw new ConstructionException("null returned by new");
-		}
-
-		this(cast(AdwValueObject*) __p, true);
-	}
-
-	/**
-	 * Creates a new `AdwValueObject` from a string.
-	 *
-	 * This is a convenience method to create a `AdwValueObject` that stores a
-	 * string.
-	 *
-	 * Params:
-	 *     string_ = the string to store
-	 *
-	 * Returns: the newly created `AdwValueObject`
-	 *
-	 * Since: 1.0
-	 *
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this(string string_)
-	{
-		auto __p = adw_value_object_new_string(Str.toStringz(string_));
-
-		if(__p is null)
-		{
-			throw new ConstructionException("null returned by new_string");
 		}
 
 		this(cast(AdwValueObject*) __p, true);

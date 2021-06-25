@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/avatar
+avatar.so
+avatar.dylib
+avatar.dll
+avatar.a
+avatar.lib
+avatar-test-*
+*.exe
+*.o
+*.obj
+*.lst

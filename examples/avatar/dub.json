@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"KonstantIMP"
+	],
+	"dependencies": {
+		"d_adw" : "*"
+	},
+	"copyright": "Copyright © 2021, KonstantIMP",
+	"description": "Example of using AdwaitaAvatar widget with gtk4",
+	"license": "LGPL-3.0",
+	"name": "avatar"
+}

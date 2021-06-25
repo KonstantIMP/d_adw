@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/d_adw
+d_adw.so
+d_adw.dylib
+d_adw.dll
+d_adw.a
+d_adw.lib
+d_adw-test-*
+*.exe
+*.o
+*.obj
+*.lst

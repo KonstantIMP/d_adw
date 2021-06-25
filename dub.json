@@ -11,5 +11,6 @@
 	"license": "LGPL-3.0",
 	"name": "d_adw",
 	"sourcePaths": ["source/adw"],
-    "importPaths": ["source/adw"]
+    "importPaths": ["source/adw"],
+	"version": "0.0.1"
 }

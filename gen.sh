@@ -1,3 +1,3 @@
 #!/bin/bash
 
-girtod
+girtod --use-runtime-linker

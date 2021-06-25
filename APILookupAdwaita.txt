@@ -1,0 +1,4 @@
+wrap: adw
+file: Adw-1.gir
+
+

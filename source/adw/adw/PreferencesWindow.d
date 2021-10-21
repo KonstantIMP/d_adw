@@ -23,6 +23,8 @@ private import adw.Window;
 private import adw.c.functions;
 public  import adw.c.types;
 private import glib.ConstructionException;
+private import glib.Str;
+private import glib.c.functions;
 private import gobject.ObjectG;
 private import gtk.Widget;
 
@@ -148,6 +150,37 @@ public class PreferencesWindow : Window
 	}
 
 	/**
+	 * Gets the currently visible page of @self.
+	 *
+	 * Returns: the visible page
+	 *
+	 * Since: 1.0
+	 */
+	public PreferencesPage getVisiblePage()
+	{
+		auto __p = adw_preferences_window_get_visible_page(adwPreferencesWindow);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PreferencesPage)(cast(AdwPreferencesPage*) __p);
+	}
+
+	/**
+	 * Gets the name of currently visible page of @self.
+	 *
+	 * Returns: the name of the visible page
+	 *
+	 * Since: 1.0
+	 */
+	public string getVisiblePageName()
+	{
+		return Str.toString(adw_preferences_window_get_visible_page_name(adwPreferencesWindow));
+	}
+
+	/**
 	 * Sets @subpage as the window's subpage and opens it.
 	 *
 	 * The transition can be cancelled by the user, in which case visible child will
@@ -200,5 +233,31 @@ public class PreferencesWindow : Window
 	public void setSearchEnabled(bool searchEnabled)
 	{
 		adw_preferences_window_set_search_enabled(adwPreferencesWindow, searchEnabled);
+	}
+
+	/**
+	 * Makes @page the visible page of @self.
+	 *
+	 * Params:
+	 *     page = a page of @self
+	 *
+	 * Since: 1.0
+	 */
+	public void setVisiblePage(PreferencesPage page)
+	{
+		adw_preferences_window_set_visible_page(adwPreferencesWindow, (page is null) ? null : page.getPreferencesPageStruct());
+	}
+
+	/**
+	 * Makes the page with the given name visible.
+	 *
+	 * Params:
+	 *     name = the name of the page to make visible
+	 *
+	 * Since: 1.0
+	 */
+	public void setVisiblePageName(string name)
+	{
+		adw_preferences_window_set_visible_page_name(adwPreferencesWindow, Str.toStringz(name));
 	}
 }

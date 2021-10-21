@@ -38,7 +38,7 @@ private import std.algorithm;
 
 
 /**
- * A dynamic tabbed container
+ * A dynamic tabbed container.
  * 
  * `AdwTabView` is a container which shows one child at a time. While it
  * provides keyboard shortcuts for switching between pages, it does not provide
@@ -422,7 +422,7 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Returns a `GListModel` that contains the pages of @self.
+	 * Returns a [iface@Gio.ListModel] that contains the pages of @self.
 	 *
 	 * This can be used to keep an up-to-date view. The model also implements
 	 * [iface@Gtk.SelectionModel] and can be used to track and change the selected

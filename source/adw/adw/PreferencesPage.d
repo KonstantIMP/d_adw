@@ -128,6 +128,18 @@ public class PreferencesPage : Widget
 	}
 
 	/**
+	 * Gets the name of @self.
+	 *
+	 * Returns: the name of @self
+	 *
+	 * Since: 1.0
+	 */
+	public override string getName()
+	{
+		return Str.toString(adw_preferences_page_get_name(adwPreferencesPage));
+	}
+
+	/**
 	 * Gets the title of @self.
 	 *
 	 * Returns: the title of @self.
@@ -175,6 +187,19 @@ public class PreferencesPage : Widget
 	public void setIconName(string iconName)
 	{
 		adw_preferences_page_set_icon_name(adwPreferencesPage, Str.toStringz(iconName));
+	}
+
+	/**
+	 * Sets the name of @self.
+	 *
+	 * Params:
+	 *     name = the name
+	 *
+	 * Since: 1.0
+	 */
+	public override void setName(string name)
+	{
+		adw_preferences_page_set_name(adwPreferencesPage, Str.toStringz(name));
 	}
 
 	/**

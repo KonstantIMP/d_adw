@@ -265,6 +265,16 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
+	 * Gets the fold threshold policy for @self.
+	 *
+	 * Since: 1.0
+	 */
+	public AdwFoldThresholdPolicy getFoldThresholdPolicy()
+	{
+		return adw_leaflet_get_fold_threshold_policy(adwLeaflet);
+	}
+
+	/**
 	 * Gets whether @self is folded.
 	 *
 	 * Returns: whether @self is folded.
@@ -277,37 +287,13 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Gets whether @self is homogeneous for the given fold and orientation.
-	 *
-	 * See [property@Adw.Leaflet:hhomogeneous-folded],
-	 * [property@Adw.Leaflet:vhomogeneous-folded],
-	 * [property@Adw.Leaflet:hhomogeneous-unfolded],
-	 * [property@Adw.Leaflet:vhomogeneous-unfolded].
-	 *
-	 * Params:
-	 *     folded = the fold
-	 *     orientation = the orientation
-	 *
-	 * Returns: whether @self is homogeneous for the given fold and orientation
+	 * Gets whether @self is homogeneous.
 	 *
 	 * Since: 1.0
 	 */
-	public bool getHomogeneous(bool folded, GtkOrientation orientation)
+	public bool getHomogeneous()
 	{
-		return adw_leaflet_get_homogeneous(adwLeaflet, folded, orientation) != 0;
-	}
-
-	/**
-	 * Gets whether the leaflet interpolates its size when changing the visible
-	 * child.
-	 *
-	 * Returns: whether the size is interpolated
-	 *
-	 * Since: 1.0
-	 */
-	public bool getInterpolateSize()
-	{
-		return adw_leaflet_get_interpolate_size(adwLeaflet) != 0;
+		return adw_leaflet_get_homogeneous(adwLeaflet) != 0;
 	}
 
 	/**
@@ -345,7 +331,7 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Returns a `GListModel` that contains the pages of the leaflet.
+	 * Returns a [iface@Gio.ListModel] that contains the pages of the leaflet.
 	 *
 	 * This can be used to keep an up-to-date view. The model also implements
 	 * [iface@Gtk.SelectionModel] and can be used to track and change the visible
@@ -560,41 +546,32 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Sets @self to be homogeneous or not for the given fold and orientation.
-	 *
-	 * If it is homogeneous, @self will request the same width or height for all its
-	 * children depending on the orientation. If it isn't and it is folded, the
-	 * leaflet may change width or height when a different child becomes visible.
-	 *
-	 * See [property@Adw.Leaflet:hhomogeneous-folded],
-	 * [property@Adw.Leaflet:vhomogeneous-folded],
-	 * [property@Adw.Leaflet:hhomogeneous-unfolded],
-	 * [property@Adw.Leaflet:vhomogeneous-unfolded].
+	 * Sets the fold threshold policy for @self.
 	 *
 	 * Params:
-	 *     folded = the fold
-	 *     orientation = the orientation
-	 *     homogeneous = `TRUE` to make @self homogeneous
+	 *     policy = the policy to use
 	 *
 	 * Since: 1.0
 	 */
-	public void setHomogeneous(bool folded, GtkOrientation orientation, bool homogeneous)
+	public void setFoldThresholdPolicy(AdwFoldThresholdPolicy policy)
 	{
-		adw_leaflet_set_homogeneous(adwLeaflet, folded, orientation, homogeneous);
+		adw_leaflet_set_fold_threshold_policy(adwLeaflet, policy);
 	}
 
 	/**
-	 * Sets whether the leaflet interpolates its size when changing the visible
-	 * child.
+	 * Sets @self to be homogeneous or not.
+	 *
+	 * If set to `FALSE`, different children can have different size along the
+	 * opposite orientation.
 	 *
 	 * Params:
-	 *     interpolateSize = the new value
+	 *     homogeneous = whether to make @self homogeneous
 	 *
 	 * Since: 1.0
 	 */
-	public void setInterpolateSize(bool interpolateSize)
+	public void setHomogeneous(bool homogeneous)
 	{
-		adw_leaflet_set_interpolate_size(adwLeaflet, interpolateSize);
+		adw_leaflet_set_homogeneous(adwLeaflet, homogeneous);
 	}
 
 	/**

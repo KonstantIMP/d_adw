@@ -16,7 +16,7 @@
  * along with d_adw; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
-module adw.EnumValueObject;
+module adw.EnumListItem;
 
 private import adw.c.functions;
 public  import adw.c.types;
@@ -26,43 +26,43 @@ private import gobject.ObjectG;
 
 
 /**
- * `AdwEnumValueObject` is the type of items in a [class@Adw.EnumListModel].
+ * `AdwEnumListItem` is the type of items in a [class@Adw.EnumListModel].
  *
  * Since: 1.0
  */
-public class EnumValueObject : ObjectG
+public class EnumListItem : ObjectG
 {
 	/** the main Gtk struct */
-	protected AdwEnumValueObject* adwEnumValueObject;
+	protected AdwEnumListItem* adwEnumListItem;
 
 	/** Get the main Gtk struct */
-	public AdwEnumValueObject* getEnumValueObjectStruct(bool transferOwnership = false)
+	public AdwEnumListItem* getEnumListItemStruct(bool transferOwnership = false)
 	{
 		if (transferOwnership)
 			ownedRef = false;
-		return adwEnumValueObject;
+		return adwEnumListItem;
 	}
 
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct()
 	{
-		return cast(void*)adwEnumValueObject;
+		return cast(void*)adwEnumListItem;
 	}
 
 	/**
 	 * Sets our main struct and passes it to the parent class.
 	 */
-	public this (AdwEnumValueObject* adwEnumValueObject, bool ownedRef = false)
+	public this (AdwEnumListItem* adwEnumListItem, bool ownedRef = false)
 	{
-		this.adwEnumValueObject = adwEnumValueObject;
-		super(cast(GObject*)adwEnumValueObject, ownedRef);
+		this.adwEnumListItem = adwEnumListItem;
+		super(cast(GObject*)adwEnumListItem, ownedRef);
 	}
 
 
 	/** */
 	public static GType getType()
 	{
-		return adw_enum_value_object_get_type();
+		return adw_enum_list_item_get_type();
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class EnumValueObject : ObjectG
 	 */
 	public string getName()
 	{
-		return Str.toString(adw_enum_value_object_get_name(adwEnumValueObject));
+		return Str.toString(adw_enum_list_item_get_name(adwEnumListItem));
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class EnumValueObject : ObjectG
 	 */
 	public string getNick()
 	{
-		return Str.toString(adw_enum_value_object_get_nick(adwEnumValueObject));
+		return Str.toString(adw_enum_list_item_get_nick(adwEnumListItem));
 	}
 
 	/**
@@ -98,6 +98,6 @@ public class EnumValueObject : ObjectG
 	 */
 	public int getValue()
 	{
-		return adw_enum_value_object_get_value(adwEnumValueObject);
+		return adw_enum_list_item_get_value(adwEnumListItem);
 	}
 }

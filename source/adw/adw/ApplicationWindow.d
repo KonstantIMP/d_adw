@@ -81,18 +81,11 @@ public class ApplicationWindow : DGtkApplicationWindow
 	}
 
 	/**
-	 * Sets the child widget of @self.
-	 *
-	 * This method should always be used instead of [method@Gtk.Window.set_child].
-	 *
-	 * Params:
-	 *     child = the child widget
-	 *
-	 * Since: 1.0
+	 * You should use `setContent(Widget)` instead
 	 */
-	public override void setChild(Widget child)
+	override void setChild(Widget child)
 	{
-		adw_application_window_set_child(adwApplicationWindow, (child is null) ? null : child.getWidgetStruct());
+		setContent(child);
 	}
 
 	/**
@@ -129,17 +122,17 @@ public class ApplicationWindow : DGtkApplicationWindow
 	}
 
 	/**
-	 * Gets the child widget of @self.
+	 * Gets the content widget of @self.
 	 *
 	 * This method should always be used instead of [method@Gtk.Window.get_child].
 	 *
-	 * Returns: the child widget of @self
+	 * Returns: the content widget of @self
 	 *
 	 * Since: 1.0
 	 */
-	public override Widget getChild()
+	public Widget getContent()
 	{
-		auto __p = adw_application_window_get_child(adwApplicationWindow);
+		auto __p = adw_application_window_get_content(adwApplicationWindow);
 
 		if(__p is null)
 		{
@@ -147,5 +140,20 @@ public class ApplicationWindow : DGtkApplicationWindow
 		}
 
 		return ObjectG.getDObject!(Widget)(cast(GtkWidget*) __p);
+	}
+
+	/**
+	 * Sets the content widget of @self.
+	 *
+	 * This method should always be used instead of [method@Gtk.Window.set_child].
+	 *
+	 * Params:
+	 *     content = the content widget
+	 *
+	 * Since: 1.0
+	 */
+	public void setContent(Widget content)
+	{
+		adw_application_window_set_content(adwApplicationWindow, (content is null) ? null : content.getWidgetStruct());
 	}
 }

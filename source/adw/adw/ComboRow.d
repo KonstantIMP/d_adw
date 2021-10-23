@@ -42,7 +42,8 @@ private import gtk.Widget;
  * 
  * ## CSS nodes
  * 
- * `AdwComboRow` has a main CSS node with name `row`.
+ * `AdwComboRow` has a main CSS node with name `row` and the `.combo` style
+ * class.
  * 
  * Its popover has the node named `popover` with the `.combo` style class, it
  * contains a [class@Gtk.ScrolledWindow], which in turn contains a
@@ -272,7 +273,7 @@ public class ComboRow : ActionRow
 	}
 
 	/**
-	 * Sets the `GListModel` to use.
+	 * Sets the [iface@Gio.ListModel] to use.
 	 *
 	 * Params:
 	 *     model = the model to use

@@ -134,6 +134,18 @@ public class Squeezer : Widget, OrientableIF
 	}
 
 	/**
+	 * Gets whether to allow squeezing beyond the last child's minimum size.
+	 *
+	 * Returns: whether @self allows squeezing beyond the last child
+	 *
+	 * Since: 1.0
+	 */
+	public bool getAllowNone()
+	{
+		return adw_squeezer_get_allow_none(adwSqueezer) != 0;
+	}
+
+	/**
 	 * Gets whether all children have the same size for the opposite orientation.
 	 *
 	 * Returns: whether @self is homogeneous
@@ -180,7 +192,7 @@ public class Squeezer : Widget, OrientableIF
 	}
 
 	/**
-	 * Returns a `GListModel` that contains the pages of the squeezer,
+	 * Returns a [iface@Gio.ListModel] that contains the pages of @self.
 	 *
 	 * This can be used to keep an up-to-date view. The model also implements
 	 * [iface@Gtk.SelectionModel] and can be used to track the visible page.
@@ -199,6 +211,16 @@ public class Squeezer : Widget, OrientableIF
 		}
 
 		return ObjectG.getDObject!(SelectionModelIF)(cast(GtkSelectionModel*) __p, true);
+	}
+
+	/**
+	 * Gets the fold threshold policy for @self.
+	 *
+	 * Since: 1.0
+	 */
+	public AdwFoldThresholdPolicy getSwitchThresholdPolicy()
+	{
+		return adw_squeezer_get_switch_threshold_policy(adwSqueezer);
 	}
 
 	/**
@@ -294,7 +316,20 @@ public class Squeezer : Widget, OrientableIF
 	}
 
 	/**
-	 * Sets hether all children have the same size for the opposite orientation.
+	 * Sets whether to allow squeezing beyond the last child's minimum size.
+	 *
+	 * Params:
+	 *     allowNone = whether @self allows squeezing beyond the last child
+	 *
+	 * Since: 1.0
+	 */
+	public void setAllowNone(bool allowNone)
+	{
+		adw_squeezer_set_allow_none(adwSqueezer, allowNone);
+	}
+
+	/**
+	 * Sets whether all children have the same size for the opposite orientation.
 	 *
 	 * Params:
 	 *     homogeneous = whether @self is homogeneous
@@ -317,6 +352,19 @@ public class Squeezer : Widget, OrientableIF
 	public void setInterpolateSize(bool interpolateSize)
 	{
 		adw_squeezer_set_interpolate_size(adwSqueezer, interpolateSize);
+	}
+
+	/**
+	 * Sets the fold threshold policy for @self.
+	 *
+	 * Params:
+	 *     policy = the policy to use
+	 *
+	 * Since: 1.0
+	 */
+	public void setSwitchThresholdPolicy(AdwFoldThresholdPolicy policy)
+	{
+		adw_squeezer_set_switch_threshold_policy(adwSqueezer, policy);
 	}
 
 	/**

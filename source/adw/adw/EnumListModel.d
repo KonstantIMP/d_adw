@@ -27,9 +27,9 @@ private import gobject.ObjectG;
 
 
 /**
- * A `GListModel` representing values of a given enum.
+ * A [iface@Gio.ListModel] representing values of a given enum.
  * 
- * `AdwEnumListModel` contains objects of type [class@AdwEnumValueObject].
+ * `AdwEnumListModel` contains objects of type [class@AdwEnumListItem].
  *
  * Since: 1.0
  */

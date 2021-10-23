@@ -21,7 +21,7 @@ module adw.Avatar;
 private import adw.c.functions;
 public  import adw.c.types;
 private import gdk.PaintableIF;
-private import gdkpixbuf.Pixbuf;
+private import gdk.Texture;
 private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
@@ -119,28 +119,27 @@ public class Avatar : Widget
 	}
 
 	/**
-	 * Renders @self into a [class@GdkPixbuf.Pixbuf] at @size and @scale_factor.
+	 * Renders @self into a [class@Gdk.Texture] at @scale_factor.
 	 *
 	 * This can be used to export the fallback avatar.
 	 *
 	 * Params:
-	 *     size = The size of the pixbuf
 	 *     scaleFactor = The scale factor
 	 *
-	 * Returns: the pixbuf
+	 * Returns: the texture
 	 *
 	 * Since: 1.0
 	 */
-	public Pixbuf drawToPixbuf(int size, int scaleFactor)
+	public Texture drawToTexture(int scaleFactor)
 	{
-		auto __p = adw_avatar_draw_to_pixbuf(adwAvatar, size, scaleFactor);
+		auto __p = adw_avatar_draw_to_texture(adwAvatar, scaleFactor);
 
 		if(__p is null)
 		{
 			return null;
 		}
 
-		return ObjectG.getDObject!(Pixbuf)(cast(GdkPixbuf*) __p, true);
+		return ObjectG.getDObject!(Texture)(cast(GdkTexture*) __p, true);
 	}
 
 	/**

@@ -223,6 +223,16 @@ public class Flap : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
+	 * Gets the fold threshold policy for @self.
+	 *
+	 * Since: 1.0
+	 */
+	public AdwFoldThresholdPolicy getFoldThresholdPolicy()
+	{
+		return adw_flap_get_fold_threshold_policy(adwFlap);
+	}
+
+	/**
 	 * Gets whether @self is currently folded.
 	 *
 	 * Returns: `TRUE` if @self is currently folded
@@ -412,6 +422,19 @@ public class Flap : Widget, SwipeableIF, OrientableIF
 	public void setFoldPolicy(AdwFlapFoldPolicy policy)
 	{
 		adw_flap_set_fold_policy(adwFlap, policy);
+	}
+
+	/**
+	 * Sets the fold threshold policy for @self.
+	 *
+	 * Params:
+	 *     policy = the policy to use
+	 *
+	 * Since: 1.0
+	 */
+	public void setFoldThresholdPolicy(AdwFoldThresholdPolicy policy)
+	{
+		adw_flap_set_fold_threshold_policy(adwFlap, policy);
 	}
 
 	/**

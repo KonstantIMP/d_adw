@@ -43,14 +43,12 @@ shared static this()
 	Linker.link(adw_action_row_get_subtitle, "adw_action_row_get_subtitle", LIBRARY_ADW);
 	Linker.link(adw_action_row_get_subtitle_lines, "adw_action_row_get_subtitle_lines", LIBRARY_ADW);
 	Linker.link(adw_action_row_get_title_lines, "adw_action_row_get_title_lines", LIBRARY_ADW);
-	Linker.link(adw_action_row_get_use_underline, "adw_action_row_get_use_underline", LIBRARY_ADW);
 	Linker.link(adw_action_row_remove, "adw_action_row_remove", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_activatable_widget, "adw_action_row_set_activatable_widget", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_icon_name, "adw_action_row_set_icon_name", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_subtitle, "adw_action_row_set_subtitle", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_subtitle_lines, "adw_action_row_set_subtitle_lines", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_title_lines, "adw_action_row_set_title_lines", LIBRARY_ADW);
-	Linker.link(adw_action_row_set_use_underline, "adw_action_row_set_use_underline", LIBRARY_ADW);
 
 	// adw.Application
 
@@ -209,22 +207,20 @@ shared static this()
 
 	Linker.link(adw_expander_row_get_type, "adw_expander_row_get_type", LIBRARY_ADW);
 	Linker.link(adw_expander_row_new, "adw_expander_row_new", LIBRARY_ADW);
-	Linker.link(adw_expander_row_add, "adw_expander_row_add", LIBRARY_ADW);
 	Linker.link(adw_expander_row_add_action, "adw_expander_row_add_action", LIBRARY_ADW);
 	Linker.link(adw_expander_row_add_prefix, "adw_expander_row_add_prefix", LIBRARY_ADW);
+	Linker.link(adw_expander_row_add_row, "adw_expander_row_add_row", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_enable_expansion, "adw_expander_row_get_enable_expansion", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_expanded, "adw_expander_row_get_expanded", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_icon_name, "adw_expander_row_get_icon_name", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_show_enable_switch, "adw_expander_row_get_show_enable_switch", LIBRARY_ADW);
 	Linker.link(adw_expander_row_get_subtitle, "adw_expander_row_get_subtitle", LIBRARY_ADW);
-	Linker.link(adw_expander_row_get_use_underline, "adw_expander_row_get_use_underline", LIBRARY_ADW);
 	Linker.link(adw_expander_row_remove, "adw_expander_row_remove", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_enable_expansion, "adw_expander_row_set_enable_expansion", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_expanded, "adw_expander_row_set_expanded", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_icon_name, "adw_expander_row_set_icon_name", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_show_enable_switch, "adw_expander_row_set_show_enable_switch", LIBRARY_ADW);
 	Linker.link(adw_expander_row_set_subtitle, "adw_expander_row_set_subtitle", LIBRARY_ADW);
-	Linker.link(adw_expander_row_set_use_underline, "adw_expander_row_set_use_underline", LIBRARY_ADW);
 
 	// adw.Flap
 
@@ -439,10 +435,12 @@ shared static this()
 	Linker.link(adw_status_page_get_child, "adw_status_page_get_child", LIBRARY_ADW);
 	Linker.link(adw_status_page_get_description, "adw_status_page_get_description", LIBRARY_ADW);
 	Linker.link(adw_status_page_get_icon_name, "adw_status_page_get_icon_name", LIBRARY_ADW);
+	Linker.link(adw_status_page_get_paintable, "adw_status_page_get_paintable", LIBRARY_ADW);
 	Linker.link(adw_status_page_get_title, "adw_status_page_get_title", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_child, "adw_status_page_set_child", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_description, "adw_status_page_set_description", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_icon_name, "adw_status_page_set_icon_name", LIBRARY_ADW);
+	Linker.link(adw_status_page_set_paintable, "adw_status_page_set_paintable", LIBRARY_ADW);
 	Linker.link(adw_status_page_set_title, "adw_status_page_set_title", LIBRARY_ADW);
 
 	// adw.StyleManager
@@ -670,14 +668,12 @@ __gshared extern(C)
 	const(char)* function(AdwActionRow* self) c_adw_action_row_get_subtitle;
 	int function(AdwActionRow* self) c_adw_action_row_get_subtitle_lines;
 	int function(AdwActionRow* self) c_adw_action_row_get_title_lines;
-	int function(AdwActionRow* self) c_adw_action_row_get_use_underline;
 	void function(AdwActionRow* self, GtkWidget* widget) c_adw_action_row_remove;
 	void function(AdwActionRow* self, GtkWidget* widget) c_adw_action_row_set_activatable_widget;
 	void function(AdwActionRow* self, const(char)* iconName) c_adw_action_row_set_icon_name;
 	void function(AdwActionRow* self, const(char)* subtitle) c_adw_action_row_set_subtitle;
 	void function(AdwActionRow* self, int subtitleLines) c_adw_action_row_set_subtitle_lines;
 	void function(AdwActionRow* self, int titleLines) c_adw_action_row_set_title_lines;
-	void function(AdwActionRow* self, int useUnderline) c_adw_action_row_set_use_underline;
 
 	// adw.Application
 
@@ -836,22 +832,20 @@ __gshared extern(C)
 
 	GType function() c_adw_expander_row_get_type;
 	GtkWidget* function() c_adw_expander_row_new;
-	void function(AdwExpanderRow* self, GtkWidget* child) c_adw_expander_row_add;
 	void function(AdwExpanderRow* self, GtkWidget* widget) c_adw_expander_row_add_action;
 	void function(AdwExpanderRow* self, GtkWidget* widget) c_adw_expander_row_add_prefix;
+	void function(AdwExpanderRow* self, GtkWidget* child) c_adw_expander_row_add_row;
 	int function(AdwExpanderRow* self) c_adw_expander_row_get_enable_expansion;
 	int function(AdwExpanderRow* self) c_adw_expander_row_get_expanded;
 	const(char)* function(AdwExpanderRow* self) c_adw_expander_row_get_icon_name;
 	int function(AdwExpanderRow* self) c_adw_expander_row_get_show_enable_switch;
 	const(char)* function(AdwExpanderRow* self) c_adw_expander_row_get_subtitle;
-	int function(AdwExpanderRow* self) c_adw_expander_row_get_use_underline;
 	void function(AdwExpanderRow* self, GtkWidget* child) c_adw_expander_row_remove;
 	void function(AdwExpanderRow* self, int enableExpansion) c_adw_expander_row_set_enable_expansion;
 	void function(AdwExpanderRow* self, int expanded) c_adw_expander_row_set_expanded;
 	void function(AdwExpanderRow* self, const(char)* iconName) c_adw_expander_row_set_icon_name;
 	void function(AdwExpanderRow* self, int showEnableSwitch) c_adw_expander_row_set_show_enable_switch;
 	void function(AdwExpanderRow* self, const(char)* subtitle) c_adw_expander_row_set_subtitle;
-	void function(AdwExpanderRow* self, int useUnderline) c_adw_expander_row_set_use_underline;
 
 	// adw.Flap
 
@@ -1066,10 +1060,12 @@ __gshared extern(C)
 	GtkWidget* function(AdwStatusPage* self) c_adw_status_page_get_child;
 	const(char)* function(AdwStatusPage* self) c_adw_status_page_get_description;
 	const(char)* function(AdwStatusPage* self) c_adw_status_page_get_icon_name;
+	GdkPaintable* function(AdwStatusPage* self) c_adw_status_page_get_paintable;
 	const(char)* function(AdwStatusPage* self) c_adw_status_page_get_title;
 	void function(AdwStatusPage* self, GtkWidget* child) c_adw_status_page_set_child;
 	void function(AdwStatusPage* self, const(char)* description) c_adw_status_page_set_description;
 	void function(AdwStatusPage* self, const(char)* iconName) c_adw_status_page_set_icon_name;
+	void function(AdwStatusPage* self, GdkPaintable* paintable) c_adw_status_page_set_paintable;
 	void function(AdwStatusPage* self, const(char)* title) c_adw_status_page_set_title;
 
 	// adw.StyleManager
@@ -1295,14 +1291,12 @@ alias c_adw_action_row_get_icon_name adw_action_row_get_icon_name;
 alias c_adw_action_row_get_subtitle adw_action_row_get_subtitle;
 alias c_adw_action_row_get_subtitle_lines adw_action_row_get_subtitle_lines;
 alias c_adw_action_row_get_title_lines adw_action_row_get_title_lines;
-alias c_adw_action_row_get_use_underline adw_action_row_get_use_underline;
 alias c_adw_action_row_remove adw_action_row_remove;
 alias c_adw_action_row_set_activatable_widget adw_action_row_set_activatable_widget;
 alias c_adw_action_row_set_icon_name adw_action_row_set_icon_name;
 alias c_adw_action_row_set_subtitle adw_action_row_set_subtitle;
 alias c_adw_action_row_set_subtitle_lines adw_action_row_set_subtitle_lines;
 alias c_adw_action_row_set_title_lines adw_action_row_set_title_lines;
-alias c_adw_action_row_set_use_underline adw_action_row_set_use_underline;
 
 // adw.Application
 
@@ -1461,22 +1455,20 @@ alias c_adw_enum_list_model_get_enum_type adw_enum_list_model_get_enum_type;
 
 alias c_adw_expander_row_get_type adw_expander_row_get_type;
 alias c_adw_expander_row_new adw_expander_row_new;
-alias c_adw_expander_row_add adw_expander_row_add;
 alias c_adw_expander_row_add_action adw_expander_row_add_action;
 alias c_adw_expander_row_add_prefix adw_expander_row_add_prefix;
+alias c_adw_expander_row_add_row adw_expander_row_add_row;
 alias c_adw_expander_row_get_enable_expansion adw_expander_row_get_enable_expansion;
 alias c_adw_expander_row_get_expanded adw_expander_row_get_expanded;
 alias c_adw_expander_row_get_icon_name adw_expander_row_get_icon_name;
 alias c_adw_expander_row_get_show_enable_switch adw_expander_row_get_show_enable_switch;
 alias c_adw_expander_row_get_subtitle adw_expander_row_get_subtitle;
-alias c_adw_expander_row_get_use_underline adw_expander_row_get_use_underline;
 alias c_adw_expander_row_remove adw_expander_row_remove;
 alias c_adw_expander_row_set_enable_expansion adw_expander_row_set_enable_expansion;
 alias c_adw_expander_row_set_expanded adw_expander_row_set_expanded;
 alias c_adw_expander_row_set_icon_name adw_expander_row_set_icon_name;
 alias c_adw_expander_row_set_show_enable_switch adw_expander_row_set_show_enable_switch;
 alias c_adw_expander_row_set_subtitle adw_expander_row_set_subtitle;
-alias c_adw_expander_row_set_use_underline adw_expander_row_set_use_underline;
 
 // adw.Flap
 
@@ -1691,10 +1683,12 @@ alias c_adw_status_page_new adw_status_page_new;
 alias c_adw_status_page_get_child adw_status_page_get_child;
 alias c_adw_status_page_get_description adw_status_page_get_description;
 alias c_adw_status_page_get_icon_name adw_status_page_get_icon_name;
+alias c_adw_status_page_get_paintable adw_status_page_get_paintable;
 alias c_adw_status_page_get_title adw_status_page_get_title;
 alias c_adw_status_page_set_child adw_status_page_set_child;
 alias c_adw_status_page_set_description adw_status_page_set_description;
 alias c_adw_status_page_set_icon_name adw_status_page_set_icon_name;
+alias c_adw_status_page_set_paintable adw_status_page_set_paintable;
 alias c_adw_status_page_set_title adw_status_page_set_title;
 
 // adw.StyleManager

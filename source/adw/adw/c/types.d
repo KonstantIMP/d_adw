@@ -643,5 +643,5 @@ alias ADW_MINOR_VERSION = MINOR_VERSION;
  * Adwaita version, encoded as a string, useful for printing and
  * concatenation.
  */
-enum VERSION_S = "1.0.0.alpha.3";
+enum VERSION_S = "1.0.0.alpha.4";
 alias ADW_VERSION_S = VERSION_S;

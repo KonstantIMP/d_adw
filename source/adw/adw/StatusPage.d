@@ -20,6 +20,7 @@ module adw.StatusPage;
 
 private import adw.c.functions;
 public  import adw.c.types;
+private import gdk.PaintableIF;
 private import glib.ConstructionException;
 private import glib.Str;
 private import glib.c.functions;
@@ -148,6 +149,25 @@ public class StatusPage : Widget
 	}
 
 	/**
+	 * Gets the paintable for @self.
+	 *
+	 * Returns: the paintable
+	 *
+	 * Since: 1.0
+	 */
+	public PaintableIF getPaintable()
+	{
+		auto __p = adw_status_page_get_paintable(adwStatusPage);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(PaintableIF)(cast(GdkPaintable*) __p);
+	}
+
+	/**
 	 * Gets the title for @self.
 	 *
 	 * Returns: the title
@@ -196,6 +216,19 @@ public class StatusPage : Widget
 	public void setIconName(string iconName)
 	{
 		adw_status_page_set_icon_name(adwStatusPage, Str.toStringz(iconName));
+	}
+
+	/**
+	 * Sets the paintable for @self.
+	 *
+	 * Params:
+	 *     paintable = the paintable
+	 *
+	 * Since: 1.0
+	 */
+	public void setPaintable(PaintableIF paintable)
+	{
+		adw_status_page_set_paintable(adwStatusPage, (paintable is null) ? null : paintable.getPaintableStruct());
 	}
 
 	/**

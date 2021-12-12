@@ -1,7 +1,7 @@
 {
 	"fileVersion": 1,
 	"versions": {
-		"d_adw": "0.0.1",
-		"gtk-d": "4.0.0"
+		"d_adw": {"path":"../.."},
+		"gtk-d": {"version":"73b54335652b1712a569af81a02661b35d211244","repository":"git+https://github.com/gtkd-developers/GtkD.git"}
 	}
 }

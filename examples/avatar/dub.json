@@ -3,7 +3,11 @@
 		"KonstantIMP"
 	],
 	"dependencies": {
-		"d_adw" : "*"
+		"d_adw" : { "path": "../.." },
+		"gtk-d": {
+			"repository": "git+https://github.com/gtkd-developers/GtkD.git",
+			"version": "73b54335652b1712a569af81a02661b35d211244"
+		}
 	},
 	"copyright": "Copyright © 2021, KonstantIMP",
 	"description": "Example of using AdwaitaAvatar widget with gtk4",

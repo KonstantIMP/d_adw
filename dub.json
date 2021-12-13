@@ -5,7 +5,7 @@
     "targetType": "library",
 	"copyright": "Copyright © 2021, KonstantIMP",
 	"dependencies": {
-		"gtk-d": "gtk4"
+		"gtk-d": "*"
 	},
 	"description": "d_adw is the Digital Mars D programing language OO wrapper for libadwaita",
 	"license": "LGPL-3.0",

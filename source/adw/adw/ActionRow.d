@@ -234,18 +234,6 @@ public class ActionRow : PreferencesRow
 	}
 
 	/**
-	 * Gets whether underlines in title or subtitle are interpreted as mnemonics.
-	 *
-	 * Returns: `TRUE` if underlines are interpreted as mnemonics
-	 *
-	 * Since: 1.0
-	 */
-	public override bool getUseUnderline()
-	{
-		return adw_action_row_get_use_underline(adwActionRow) != 0;
-	}
-
-	/**
 	 * Removes a child from @self.
 	 *
 	 * Params:
@@ -327,19 +315,6 @@ public class ActionRow : PreferencesRow
 	public void setTitleLines(int titleLines)
 	{
 		adw_action_row_set_title_lines(adwActionRow, titleLines);
-	}
-
-	/**
-	 * Sets whether underlines in title or subtitle are interpreted as mnemonics.
-	 *
-	 * Params:
-	 *     useUnderline = whether underlines are interpreted as mnemonics
-	 *
-	 * Since: 1.0
-	 */
-	public override void setUseUnderline(bool useUnderline)
-	{
-		adw_action_row_set_use_underline(adwActionRow, useUnderline);
 	}
 
 	/**

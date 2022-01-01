@@ -18,6 +18,7 @@
  */
 module adw.Carousel;
 
+private import adw.SpringParams;
 private import adw.SwipeableIF;
 private import adw.SwipeableT;
 private import adw.c.functions;
@@ -40,11 +41,16 @@ private import std.algorithm;
 /**
  * A paginated scrolling widget.
  * 
+ * <picture>
+ * <source srcset="carousel-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="carousel.png" alt="carousel">
+ * </picture>
+ * 
  * The `AdwCarousel` widget can be used to display a set of pages with
  * swipe-based navigation between them.
  * 
- * [class@Adw.CarouselIndicatorDots] and [class@Adw.CarouselIndicatorLines] can
- * be used to provide page indicators for `AdwCarousel`.
+ * [class@CarouselIndicatorDots] and [class@CarouselIndicatorLines] can be used
+ * to provide page indicators for `AdwCarousel`.
  * 
  * ## CSS nodes
  * 
@@ -164,18 +170,6 @@ public class Carousel : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Gets the animation duration used by [method@Adw.Carousel.scroll_to].
-	 *
-	 * Returns: animation duration in milliseconds
-	 *
-	 * Since: 1.0
-	 */
-	public uint getAnimationDuration()
-	{
-		return adw_carousel_get_animation_duration(adwCarousel);
-	}
-
-	/**
 	 * Gets whether @self can be navigated.
 	 *
 	 * Returns: whether @self can be navigated
@@ -245,6 +239,25 @@ public class Carousel : Widget, SwipeableIF, OrientableIF
 	public uint getRevealDuration()
 	{
 		return adw_carousel_get_reveal_duration(adwCarousel);
+	}
+
+	/**
+	 * Gets the scroll animation spring parameters for @self.
+	 *
+	 * Returns: the animation parameters
+	 *
+	 * Since: 1.0
+	 */
+	public SpringParams getScrollParams()
+	{
+		auto __p = adw_carousel_get_scroll_params(adwCarousel);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(SpringParams)(cast(AdwSpringParams*) __p, true);
 	}
 
 	/**
@@ -320,33 +333,19 @@ public class Carousel : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Scrolls to @widget with an animation.
+	 * Scrolls to @widget.
 	 *
-	 * The [property@Adw.Carousel:animation-duration] property can be used to
-	 * control the duration.
-	 *
-	 * Params:
-	 *     widget = a child of @self
-	 *
-	 * Since: 1.0
-	 */
-	public void scrollTo(Widget widget)
-	{
-		adw_carousel_scroll_to(adwCarousel, (widget is null) ? null : widget.getWidgetStruct());
-	}
-
-	/**
-	 * Scrolls to @widget with an animation.
+	 * If @animate is `TRUE`, the transition will be animated.
 	 *
 	 * Params:
 	 *     widget = a child of @self
-	 *     duration = animation duration in milliseconds
+	 *     animate = whether to animate the transition
 	 *
 	 * Since: 1.0
 	 */
-	public void scrollToFull(Widget widget, long duration)
+	public void scrollTo(Widget widget, bool animate)
 	{
-		adw_carousel_scroll_to_full(adwCarousel, (widget is null) ? null : widget.getWidgetStruct(), duration);
+		adw_carousel_scroll_to(adwCarousel, (widget is null) ? null : widget.getWidgetStruct(), animate);
 	}
 
 	/**
@@ -389,19 +388,6 @@ public class Carousel : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Sets the animation duration used by [method@Adw.Carousel.scroll_to].
-	 *
-	 * Params:
-	 *     duration = animation duration in milliseconds
-	 *
-	 * Since: 1.0
-	 */
-	public void setAnimationDuration(uint duration)
-	{
-		adw_carousel_set_animation_duration(adwCarousel, duration);
-	}
-
-	/**
 	 * Sets whether @self can be navigated.
 	 *
 	 * Params:
@@ -425,6 +411,19 @@ public class Carousel : Widget, SwipeableIF, OrientableIF
 	public void setRevealDuration(uint revealDuration)
 	{
 		adw_carousel_set_reveal_duration(adwCarousel, revealDuration);
+	}
+
+	/**
+	 * Sets the scroll animation spring parameters for @self.
+	 *
+	 * Params:
+	 *     params = the new parameters
+	 *
+	 * Since: 1.0
+	 */
+	public void setScrollParams(SpringParams params)
+	{
+		adw_carousel_set_scroll_params(adwCarousel, (params is null) ? null : params.getSpringParamsStruct());
 	}
 
 	/**

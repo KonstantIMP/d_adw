@@ -36,43 +36,58 @@ private import gtk.Widget;
 /**
  * A title bar widget.
  * 
+ * <picture>
+ * <source srcset="header-bar-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="header-bar.png" alt="header-bar">
+ * </picture>
+ * 
  * `AdwHeaderBar` is similar to [class@Gtk.HeaderBar], but provides additional
  * features compared to it. Refer to `GtkHeaderBar` for details.
  * 
- * [property@Adw.HeaderBar:centering-policy] allows to enforce strict centering
- * of the title widget, this is useful for [class@Adw.ViewSwitcherTitle].
+ * [property.HeaderBar:centering-policy] allows to enforce strict centering of
+ * the title widget, this is useful for [class@ViewSwitcherTitle].
  * 
- * [property@Adw.HeaderBar:show-start-title-buttons] and
- * [property@Adw.HeaderBar:show-end-title-buttons] allow to easily create split
- * header bar layouts using [class@Adw.Leaflet], as follows:
+ * [property@HeaderBar:show-start-title-buttons] and
+ * [property@HeaderBar:show-end-title-buttons] allow to easily create split
+ * header bar layouts using [class@Leaflet], as follows:
  * 
  * ```xml
  * <object class="AdwLeaflet" id="leaflet">
  * <child>
  * <object class="GtkBox">
  * <property name="orientation">vertical</property>
+ * <child>
  * <object class="AdwHeaderBar">
  * <binding name="show-end-title-buttons">
  * <lookup name="folded">leaflet</lookup>
  * </binding>
  * </object>
- * ...
+ * </child>
+ * <!-- ... -->
  * </object>
  * </child>
- * ...
+ * <!-- ... -->
  * <child>
  * <object class="GtkBox">
  * <property name="orientation">vertical</property>
+ * <property name="hexpand">True</property>
+ * <child>
  * <object class="AdwHeaderBar">
  * <binding name="show-start-title-buttons">
  * <lookup name="folded">leaflet</lookup>
  * </binding>
  * </object>
- * ...
+ * </child>
+ * <!-- ... -->
  * </object>
  * </child>
  * </object>
  * ```
+ * 
+ * <picture>
+ * <source srcset="header-bar-split-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="header-bar-split.png" alt="header-bar-split">
+ * </picture>
  * 
  * ## CSS nodes
  * 
@@ -102,7 +117,7 @@ private import gtk.Widget;
  * 
  * ## Accessibility
  * 
- * `AdwHeaderBar` uses the %GTK_ACCESSIBLE_ROLE_GROUP role.
+ * `AdwHeaderBar` uses the `GTK_ACCESSIBLE_ROLE_GROUP` role.
  *
  * Since: 1.0
  */
@@ -258,8 +273,8 @@ public class HeaderBar : Widget
 	/**
 	 * Removes a child from @self.
 	 *
-	 * The child must have been added with [method@Adw.HeaderBar.pack_start],
-	 * [method@Adw.HeaderBar.pack_end] or [property@Adw.HeaderBar:title-widget].
+	 * The child must have been added with [method@HeaderBar.pack_start],
+	 * [method@HeaderBar.pack_end] or [property@HeaderBar:title-widget].
 	 *
 	 * Params:
 	 *     child = the child to remove

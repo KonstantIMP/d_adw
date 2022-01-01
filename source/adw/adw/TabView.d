@@ -43,20 +43,34 @@ private import std.algorithm;
  * `AdwTabView` is a container which shows one child at a time. While it
  * provides keyboard shortcuts for switching between pages, it does not provide
  * a visible tab bar and relies on external widgets for that, such as
- * [class@Adw.TabBar].
+ * [class@TabBar].
  * 
- * `AdwTabView` maintains a [class@Adw.TabPage] object for each page, which
- * holds additional per-page properties. You can obtain the `AdwTabPage` for a
- * page with [method@Adw.TabView.get_page], and as the return value for
- * [method@Adw.TabView.append] and other functions for adding children.
+ * `AdwTabView` maintains a [class@TabPage] object for each page, which holds
+ * additional per-page properties. You can obtain the `AdwTabPage` for a page
+ * with [method@TabView.get_page], and as the return value for
+ * [method@TabView.append] and other functions for adding children.
  * 
  * `AdwTabView` only aims to be useful for dynamic tabs in multi-window
  * document-based applications, such as web browsers, file managers, text
  * editors or terminals. It does not aim to replace [class@Gtk.Notebook] for use
  * cases such as tabbed dialogs.
  * 
- * As such, it does not support disabling page reordering or detaching, or
- * adding children via [class@Gtk.Builder].
+ * As such, it does not support disabling page reordering or detaching.
+ * 
+ * `AdwTabView` adds the following shortcuts in the managed scope:
+ * 
+ * * Ctrl+Page Up - switch to the previous page
+ * * Ctrl+Page Down - switch to the next page
+ * * Ctrl+Home - switch to the first page
+ * * Ctrl+End - switch to the last page
+ * * Ctrl+Shift+Page Up - move the current page backward
+ * * Ctrl+Shift+Page Down - move the current page forward
+ * * Ctrl+Shift+Home - move the current page at the start
+ * * Ctrl+Shift+End - move the current page at the end
+ * * Ctrl+Tab - switch to the next page, with looping
+ * * Ctrl+Shift+Tab - switch to the previous page, with looping
+ * * Alt+1-9 - switch to pages 1-9
+ * * Alt+0 - switch to page 10
  * 
  * ## CSS nodes
  * 
@@ -125,10 +139,9 @@ public class TabView : Widget
 	 *
 	 * This function can be used to automatically position new pages, and to select
 	 * the correct page when this page is closed while being selected (see
-	 * [method@Adw.TabView.close_page]).
+	 * [method@TabView.close_page]).
 	 *
-	 * If @parent is `NULL`, this function is equivalent to
-	 * [method@Adw.TabView.append].
+	 * If @parent is `NULL`, this function is equivalent to [method@TabView.append].
 	 *
 	 * Params:
 	 *     child = a widget to add
@@ -210,20 +223,20 @@ public class TabView : Widget
 	/**
 	 * Requests to close @page.
 	 *
-	 * Calling this function will result in the [signal@Adw.TabView::close-page]
-	 * signal being emitted for @page. Closing the page can then be confirmed or
-	 * denied via [method@Adw.TabView.close_page_finish].
+	 * Calling this function will result in the [signal@TabView::close-page] signal
+	 * being emitted for @page. Closing the page can then be confirmed or
+	 * denied via [method@TabView.close_page_finish].
 	 *
-	 * If the page is waiting for a [method@Adw.TabView.close_page_finish] call,
-	 * this function will do nothing.
+	 * If the page is waiting for a [method@TabView.close_page_finish] call, this
+	 * function will do nothing.
 	 *
-	 * The default handler for [signal@Adw.TabView::close-page] will immediately
-	 * confirm closing the page if it's non-pinned, or reject it if it's pinned.
-	 * This behavior can be changed by registering your own handler for that signal.
+	 * The default handler for [signal@TabView::close-page] will immediately confirm
+	 * closing the page if it's non-pinned, or reject it if it's pinned. This
+	 * behavior can be changed by registering your own handler for that signal.
 	 *
 	 * If @page was selected, another page will be selected instead:
 	 *
-	 * If the [property@Adw.TabPage:parent] value is `NULL`, the next page will be
+	 * If the [property@TabPage:parent] value is `NULL`, the next page will be
 	 * selected when possible, or if the page was already last, the previous page
 	 * will be selected instead.
 	 *
@@ -242,14 +255,14 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Completes a [method@Adw.TabView.close_page] call for @page.
+	 * Completes a [method@TabView.close_page] call for @page.
 	 *
 	 * If @confirm is `TRUE`, @page will be closed. If it's `FALSE`, it will be
-	 * reverted to its previous state and [method@Adw.TabView.close_page] can be
-	 * called for it again.
+	 * reverted to its previous state and [method@TabView.close_page] can be called
+	 * for it again.
 	 *
 	 * This function should not be called unless a custom handler for
-	 * [signal@Adw.TabView::close-page] is used.
+	 * [signal@TabView::close-page] is used.
 	 *
 	 * Params:
 	 *     page = a page of @self
@@ -363,7 +376,7 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Gets the [class@Adw.TabPage] representing the child at @position.
+	 * Gets the [class@TabPage] representing the child at @position.
 	 *
 	 * Params:
 	 *     position = the index of the page in @self, starting from 0
@@ -385,7 +398,7 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Gets the [class@Adw.TabPage] object representing @child.
+	 * Gets the [class@TabPage] object representing @child.
 	 *
 	 * Params:
 	 *     child = a child in @self
@@ -464,29 +477,10 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Gets the shortcut widget for @self.
-	 *
-	 * Returns: the shortcut widget for @self
-	 *
-	 * Since: 1.0
-	 */
-	public Widget getShortcutWidget()
-	{
-		auto __p = adw_tab_view_get_shortcut_widget(adwTabView);
-
-		if(__p is null)
-		{
-			return null;
-		}
-
-		return ObjectG.getDObject!(Widget)(cast(GtkWidget*) __p);
-	}
-
-	/**
 	 * Inserts a non-pinned page at @position.
 	 *
 	 * It's an error to try to insert a page before a pinned page, in that case
-	 * [method@Adw.TabView.insert_pinned] should be used instead.
+	 * [method@TabView.insert_pinned] should be used instead.
 	 *
 	 * Params:
 	 *     child = a widget to add
@@ -512,7 +506,7 @@ public class TabView : Widget
 	 * Inserts a pinned page at @position.
 	 *
 	 * It's an error to try to insert a pinned page after a non-pinned page, in
-	 * that case [method@Adw.TabView.insert] should be used instead.
+	 * that case [method@TabView.insert] should be used instead.
 	 *
 	 * Params:
 	 *     child = a widget to add
@@ -715,8 +709,8 @@ public class TabView : Widget
 	 * Pins or unpins @page.
 	 *
 	 * Pinned pages are guaranteed to be placed before all non-pinned pages; at any
-	 * given moment the first [property@Adw.TabView:n-pinned-pages] pages in @self
-	 * are guaranteed to be pinned.
+	 * given moment the first [property@TabView:n-pinned-pages] pages in @self are
+	 * guaranteed to be pinned.
 	 *
 	 * When a page is pinned or unpinned, it's automatically reordered: pinning a
 	 * page moves it after other pinned pages; unpinning a page moves it before
@@ -724,19 +718,19 @@ public class TabView : Widget
 	 *
 	 * Pinned pages can still be reordered between each other.
 	 *
-	 * [class@Adw.TabBar] will display pinned pages in a compact form, never showing
-	 * the title or close button, and only showing a single icon, selected in the
+	 * [class@TabBar] will display pinned pages in a compact form, never showing the
+	 * title or close button, and only showing a single icon, selected in the
 	 * following order:
 	 *
-	 * 1. [property@Adw.TabPage:indicator-icon]
-	 * 2. A spinner if [property@Adw.TabPage:loading] is `TRUE`
-	 * 3. [property@Adw.TabPage:icon]
-	 * 4. [property@Adw.TabView:default-icon]
+	 * 1. [property@TabPage:indicator-icon]
+	 * 2. A spinner if [property@TabPage:loading] is `TRUE`
+	 * 3. [property@TabPage:icon]
+	 * 4. [property@TabView:default-icon]
 	 *
-	 * Pinned pages cannot be closed by default, see
-	 * [signal@Adw.TabView::close-page] for how to override that behavior.
+	 * Pinned pages cannot be closed by default, see [signal@TabView::close-page]
+	 * for how to override that behavior.
 	 *
-	 * Changes the value of the [property@Adw.TabPage:pinned] property.
+	 * Changes the value of the [property@TabPage:pinned] property.
 	 *
 	 * Params:
 	 *     page = a page of @self
@@ -763,19 +757,6 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Sets the shortcut widget for @self.
-	 *
-	 * Params:
-	 *     widget = a shortcut widget
-	 *
-	 * Since: 1.0
-	 */
-	public void setShortcutWidget(Widget widget)
-	{
-		adw_tab_view_set_shortcut_widget(adwTabView, (widget is null) ? null : widget.getWidgetStruct());
-	}
-
-	/**
 	 * Transfers @page from @self to @other_view.
 	 *
 	 * The @page object will be reused.
@@ -796,10 +777,9 @@ public class TabView : Widget
 	}
 
 	/**
-	 * Emitted after [method@Adw.TabView.close_page] has been called for
-	 * @page.
+	 * Emitted after [method@TabView.close_page] has been called for @page.
 	 *
-	 * The handler is expected to call [method@Adw.TabView.close_page_finish] to
+	 * The handler is expected to call [method@TabView.close_page_finish] to
 	 * confirm or reject the closing.
 	 *
 	 * The default handler will immediately confirm closing for non-pinned pages,
@@ -817,9 +797,9 @@ public class TabView : Widget
 	 * }
 	 * ```
 	 *
-	 * The [method@Adw.TabView.close_page_finish] call doesn't have to happen
-	 * inside the handler, so can be used to do asynchronous checks before
-	 * confirming the closing.
+	 * The [method@TabView.close_page_finish] call doesn't have to happen inside
+	 * the handler, so can be used to do asynchronous checks before confirming the
+	 * closing.
 	 *
 	 * A typical reason to connect to this signal is to show a confirmation dialog
 	 * for closing a tab.
@@ -854,8 +834,8 @@ public class TabView : Widget
 	/**
 	 * Emitted after the indicator icon on @page has been activated.
 	 *
-	 * See [property@Adw.TabPage:indicator-icon] and
-	 * [property@Adw.TabPage:indicator-activatable].
+	 * See [property@TabPage:indicator-icon] and
+	 * [property@TabPage:indicator-activatable].
 	 *
 	 * Params:
 	 *     page = a page of @self
@@ -888,12 +868,12 @@ public class TabView : Widget
 	 * Emitted when a page has been removed or transferred to another view.
 	 *
 	 * A typical reason to connect to this signal would be to disconnect signal
-	 * handlers connected in the [signal@Adw.TabView::page-attached] handler.
+	 * handlers connected in the [signal@TabView::page-attached] handler.
 	 *
 	 * It is important not to try and destroy the page child in the handler of
 	 * this function as the child might merely be moved to another window; use
 	 * child dispose handler for that or do it in sync with your
-	 * [method@Adw.TabView.close_page_finish] calls.
+	 * [method@TabView.close_page_finish] calls.
 	 *
 	 * Params:
 	 *     page = a page of @self

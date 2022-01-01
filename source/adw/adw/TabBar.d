@@ -37,7 +37,12 @@ private import std.algorithm;
 
 
 /**
- * A tab bar for [class@Adw.TabView].
+ * A tab bar for [class@TabView].
+ * 
+ * <picture>
+ * <source srcset="tab-bar-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="tab-bar.png" alt="tab-bar">
+ * </picture>
  * 
  * The `AdwTabBar` widget is a tab bar that can be used with conjunction with
  * `AdwTabView`.
@@ -317,8 +322,7 @@ public class TabBar : Widget
 	 * If a tab is hovered for a certain period of time while dragging the content,
 	 * it will be automatically selected.
 	 *
-	 * The [signal@Adw.TabBar::extra-drag-drop] signal can be used to handle the
-	 * drop.
+	 * The [signal@TabBar::extra-drag-drop] signal can be used to handle the drop.
 	 *
 	 * Params:
 	 *     actions = the supported actions
@@ -335,7 +339,7 @@ public class TabBar : Widget
 	 * This signal is emitted when content is dropped onto a tab.
 	 *
 	 * The content must be of one of the types set up via
-	 * [method@Adw.TabBar.setup_extra_drop_target].
+	 * [method@TabBar.setup_extra_drop_target].
 	 *
 	 * See [signal@Gtk.DropTarget::drop].
 	 *

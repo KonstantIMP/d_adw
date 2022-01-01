@@ -28,7 +28,7 @@ private import gtk.Widget;
 
 
 /**
- * An auxiliary class used by [class@Adw.TabView].
+ * An auxiliary class used by [class@TabView].
  */
 public class TabPage : ObjectG
 {

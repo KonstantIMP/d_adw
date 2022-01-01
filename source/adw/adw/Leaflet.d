@@ -19,6 +19,7 @@
 module adw.Leaflet;
 
 private import adw.LeafletPage;
+private import adw.SpringParams;
 private import adw.SwipeableIF;
 private import adw.SwipeableT;
 private import adw.c.functions;
@@ -41,6 +42,15 @@ private import gtk.Widget;
 
 /**
  * An adaptive container acting like a box or a stack.
+ * 
+ * <picture>
+ * <source srcset="leaflet-wide-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="leaflet-wide.png" alt="leaflet-wide">
+ * </picture>
+ * <picture>
+ * <source srcset="leaflet-narrow-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="leaflet-narrow.png" alt="leaflet-narrow">
+ * </picture>
  * 
  * The `AdwLeaflet` widget can display its children like a [class@Gtk.Box] does
  * or like a [class@Gtk.Stack] does, adapting to size changes by switching
@@ -133,7 +143,7 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	 * Params:
 	 *     child = the widget to add
 	 *
-	 * Returns: the [class@Adw.LeafletPage] for @child
+	 * Returns: the [class@LeafletPage] for @child
 	 *
 	 * Since: 1.0
 	 */
@@ -152,12 +162,12 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	/**
 	 * Finds the previous or next navigatable child.
 	 *
-	 * This will be the same child [method@Adw.Leaflet.navigate] or swipe gestures
-	 * will navigate to.
+	 * This will be the same child [method@Leaflet.navigate] or swipe gestures will
+	 * navigate to.
 	 *
 	 * If there's no child to navigate to, `NULL` will be returned instead.
 	 *
-	 * See [property@Adw.LeafletPage:navigatable].
+	 * See [property@LeafletPage:navigatable].
 	 *
 	 * Params:
 	 *     direction = the direction
@@ -179,27 +189,27 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Gets whether a swipe gesture can be used to navigate to the previous child.
+	 * Gets whether gestures and shortcuts for navigating backward are enabled.
 	 *
-	 * Returns: whether back swipe is enabled.
+	 * Returns: Whether gestures and shortcuts are enabled.
 	 *
 	 * Since: 1.0
 	 */
-	public bool getCanSwipeBack()
+	public bool getCanNavigateBack()
 	{
-		return adw_leaflet_get_can_swipe_back(adwLeaflet) != 0;
+		return adw_leaflet_get_can_navigate_back(adwLeaflet) != 0;
 	}
 
 	/**
-	 * Gets whether a swipe gesture can be used to navigate to the next child.
+	 * Gets whether gestures and shortcuts for navigating forward are enabled.
 	 *
-	 * Returns: Whether forward swipe is enabled.
+	 * Returns: Whether gestures and shortcuts are enabled.
 	 *
 	 * Since: 1.0
 	 */
-	public bool getCanSwipeForward()
+	public bool getCanNavigateForward()
 	{
-		return adw_leaflet_get_can_swipe_forward(adwLeaflet) != 0;
+		return adw_leaflet_get_can_navigate_forward(adwLeaflet) != 0;
 	}
 
 	/**
@@ -219,7 +229,7 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	 *
 	 * Returns `NULL` if there is no child with this name.
 	 *
-	 * See [property@Adw.LeafletPage:name].
+	 * See [property@LeafletPage:name].
 	 *
 	 * Params:
 	 *     name = the name of the child to find
@@ -241,15 +251,22 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Gets the child transition animation duration for @self.
+	 * Gets the child transition spring parameters for @self.
 	 *
-	 * Returns: the child transition duration, in milliseconds
+	 * Returns: the child transition parameters
 	 *
 	 * Since: 1.0
 	 */
-	public uint getChildTransitionDuration()
+	public SpringParams getChildTransitionParams()
 	{
-		return adw_leaflet_get_child_transition_duration(adwLeaflet);
+		auto __p = adw_leaflet_get_child_transition_params(adwLeaflet);
+
+		if(__p is null)
+		{
+			return null;
+		}
+
+		return ObjectG.getDObject!(SpringParams)(cast(AdwSpringParams*) __p, true);
 	}
 
 	/**
@@ -309,7 +326,7 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Returns the [class@Adw.LeafletPage] object for @child.
+	 * Returns the [class@LeafletPage] object for @child.
 	 *
 	 * Params:
 	 *     child = a child of @self
@@ -405,7 +422,7 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	 *     child = the widget to insert
 	 *     sibling = the sibling after which to insert @child
 	 *
-	 * Returns: the [class@Adw.LeafletPage] for @child
+	 * Returns: the [class@LeafletPage] for @child
 	 *
 	 * Since: 1.0
 	 */
@@ -424,11 +441,11 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	/**
 	 * Navigates to the previous or next child.
 	 *
-	 * The child must have the [property@Adw.LeafletPage:navigatable] property set
-	 * to `TRUE`, otherwise it will be skipped.
+	 * The child must have the [property@LeafletPage:navigatable] property set to
+	 * `TRUE`, otherwise it will be skipped.
 	 *
 	 * This will be the same child as returned by
-	 * [method@Adw.Leaflet.get_adjacent_child] or navigated to via swipe gestures.
+	 * [method@Leaflet.get_adjacent_child] or navigated to via swipe gestures.
 	 *
 	 * Params:
 	 *     direction = the direction
@@ -448,7 +465,7 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	 * Params:
 	 *     child = the widget to prepend
 	 *
-	 * Returns: the [class@Adw.LeafletPage] for @child
+	 * Returns: the [class@LeafletPage] for @child
 	 *
 	 * Since: 1.0
 	 */
@@ -494,29 +511,29 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Sets whether a swipe gesture can be used to navigate to the previous child.
+	 * Sets whether gestures and shortcuts for navigating backward are enabled.
 	 *
 	 * Params:
-	 *     canSwipeBack = the new value
+	 *     canNavigateBack = the new value
 	 *
 	 * Since: 1.0
 	 */
-	public void setCanSwipeBack(bool canSwipeBack)
+	public void setCanNavigateBack(bool canNavigateBack)
 	{
-		adw_leaflet_set_can_swipe_back(adwLeaflet, canSwipeBack);
+		adw_leaflet_set_can_navigate_back(adwLeaflet, canNavigateBack);
 	}
 
 	/**
-	 * Sets whether a swipe gesture can be used to navigate to the next child.
+	 * Sets whether gestures and shortcuts for navigating forward are enabled.
 	 *
 	 * Params:
-	 *     canSwipeForward = the new value
+	 *     canNavigateForward = the new value
 	 *
 	 * Since: 1.0
 	 */
-	public void setCanSwipeForward(bool canSwipeForward)
+	public void setCanNavigateForward(bool canNavigateForward)
 	{
-		adw_leaflet_set_can_swipe_forward(adwLeaflet, canSwipeForward);
+		adw_leaflet_set_can_navigate_forward(adwLeaflet, canNavigateForward);
 	}
 
 	/**
@@ -533,16 +550,16 @@ public class Leaflet : Widget, SwipeableIF, OrientableIF
 	}
 
 	/**
-	 * Sets the child transition animation duration for @self.
+	 * Sets the child transition spring parameters for @self.
 	 *
 	 * Params:
-	 *     duration = the new duration, in milliseconds
+	 *     params = the new parameters
 	 *
 	 * Since: 1.0
 	 */
-	public void setChildTransitionDuration(uint duration)
+	public void setChildTransitionParams(SpringParams params)
 	{
-		adw_leaflet_set_child_transition_duration(adwLeaflet, duration);
+		adw_leaflet_set_child_transition_params(adwLeaflet, (params is null) ? null : params.getSpringParamsStruct());
 	}
 
 	/**

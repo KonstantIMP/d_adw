@@ -16,8 +16,9 @@
  * along with d_adw; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
-module adw.Bin;
+module adw.ToastOverlay;
 
+private import adw.Toast;
 private import adw.c.functions;
 public  import adw.c.types;
 private import glib.ConstructionException;
@@ -32,60 +33,80 @@ private import gtk.Widget;
 
 
 /**
- * A widget with one child.
+ * A widget showing toasts above its content.
  * 
  * <picture>
- * <source srcset="bin-dark.png" media="(prefers-color-scheme: dark)">
- * <img src="bin.png" alt="bin">
+ * <source srcset="toast-overlay-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="toast-overlay.png" alt="toast-overlay">
  * </picture>
  * 
- * The `AdwBin` widget has only one child, set with the [property@Bin:child]
- * property.
+ * Toasts can be shown with [method@ToastOverlay.add_toast].
  * 
- * It is useful for deriving subclasses, since it provides common code needed
- * for handling a single child widget.
+ * See [class@Toast] for details.
+ * 
+ * ## CSS nodes
+ * 
+ * ```
+ * toastoverlay
+ * ├── [child]
+ * ├── toast
+ * ┊   ├── label.heading
+ * ├── [button]
+ * ╰── button.circular.flat
+ * ```
+ * 
+ * `AdwToastOverlay`'s CSS node is called `toastoverlay`. It contains the child,
+ * as well as zero or more `toast` subnodes.
+ * 
+ * Each of the `toast` nodes contains a `label` subnode with the `.heading`
+ * style class, optionally a `button` subnode, and another `button` subnode with
+ * `.circular` and `.flat` style classes.
+ * 
+ * ## Accessibility
+ * 
+ * `AdwToastOverlay` uses the `GTK_ACCESSIBLE_ROLE_TAB_GROUP` role.
  *
  * Since: 1.0
  */
-public class Bin : Widget
+public class ToastOverlay : Widget
 {
 	/** the main Gtk struct */
-	protected AdwBin* adwBin;
+	protected AdwToastOverlay* adwToastOverlay;
 
 	/** Get the main Gtk struct */
-	public AdwBin* getBinStruct(bool transferOwnership = false)
+	public AdwToastOverlay* getToastOverlayStruct(bool transferOwnership = false)
 	{
 		if (transferOwnership)
 			ownedRef = false;
-		return adwBin;
+		return adwToastOverlay;
 	}
 
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct()
 	{
-		return cast(void*)adwBin;
+		return cast(void*)adwToastOverlay;
 	}
 
 	/**
 	 * Sets our main struct and passes it to the parent class.
 	 */
-	public this (AdwBin* adwBin, bool ownedRef = false)
+	public this (AdwToastOverlay* adwToastOverlay, bool ownedRef = false)
 	{
-		this.adwBin = adwBin;
-		super(cast(GtkWidget*)adwBin, ownedRef);
+		this.adwToastOverlay = adwToastOverlay;
+		super(cast(GtkWidget*)adwToastOverlay, ownedRef);
 	}
 
 
 	/** */
 	public static GType getType()
 	{
-		return adw_bin_get_type();
+		return adw_toast_overlay_get_type();
 	}
 
 	/**
-	 * Creates a new `AdwBin`.
+	 * Creates a new `AdwToastOverlay`.
 	 *
-	 * Returns: the new created `AdwBin`
+	 * Returns: the new created `AdwToastOverlay`
 	 *
 	 * Since: 1.0
 	 *
@@ -93,14 +114,31 @@ public class Bin : Widget
 	 */
 	public this()
 	{
-		auto __p = adw_bin_new();
+		auto __p = adw_toast_overlay_new();
 
 		if(__p is null)
 		{
 			throw new ConstructionException("null returned by new");
 		}
 
-		this(cast(AdwBin*) __p);
+		this(cast(AdwToastOverlay*) __p);
+	}
+
+	/**
+	 * Displays @toast.
+	 *
+	 * Only one toast can be shown at a time; if a toast is already being displayed,
+	 * either @toast or the original toast will be placed in a queue, depending on
+	 * the priority of @toast. See [property@Toast:priority].
+	 *
+	 * Params:
+	 *     toast = a toast
+	 *
+	 * Since: 1.0
+	 */
+	public void addToast(Toast toast)
+	{
+		adw_toast_overlay_add_toast(adwToastOverlay, (toast is null) ? null : toast.getToastStruct());
 	}
 
 	/**
@@ -112,7 +150,7 @@ public class Bin : Widget
 	 */
 	public Widget getChild()
 	{
-		auto __p = adw_bin_get_child(adwBin);
+		auto __p = adw_toast_overlay_get_child(adwToastOverlay);
 
 		if(__p is null)
 		{
@@ -132,6 +170,6 @@ public class Bin : Widget
 	 */
 	public void setChild(Widget child)
 	{
-		adw_bin_set_child(adwBin, (child is null) ? null : child.getWidgetStruct());
+		adw_toast_overlay_set_child(adwToastOverlay, (child is null) ? null : child.getWidgetStruct());
 	}
 }

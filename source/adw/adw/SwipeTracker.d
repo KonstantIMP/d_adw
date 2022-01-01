@@ -30,16 +30,16 @@ private import std.algorithm;
 
 
 /**
- * A swipe tracker used in [class@Adw.Carousel] and [class@Adw.Leaflet].
+ * A swipe tracker used in [class@Carousel], [class@Flap] and [class@Leaflet].
  * 
  * The `AdwSwipeTracker` object can be used for implementing widgets with swipe
  * gestures. It supports touch-based swipes, pointer dragging, and touchpad
  * scrolling.
  * 
- * The widgets will probably want to expose the
- * [property@Adw.SwipeTracker:enabled] property. If they expect to use
- * horizontal orientation, [property@Adw.SwipeTracker:reversed] can be used for
- * supporting RTL text direction.
+ * The widgets will probably want to expose the [property@SwipeTracker:enabled]
+ * property. If they expect to use horizontal orientation,
+ * [property@SwipeTracker:reversed] can be used for supporting RTL text
+ * direction.
  *
  * Since: 1.0
  */
@@ -241,6 +241,36 @@ public class SwipeTracker : ObjectG, OrientableIF
 	}
 
 	/**
+	 * This signal is emitted right before a swipe will be started, after the
+	 * drag threshold has been passed.
+	 *
+	 * Since: 1.0
+	 */
+	gulong addOnBeginSwipe(void delegate(SwipeTracker) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "begin-swipe", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
+	 * This signal is emitted as soon as the gesture has stopped.
+	 *
+	 * The user is expected to animate the deceleration from the current progress
+	 * value to @to with an animation using @velocity as the initial velocity,
+	 * provided in pixels per second. [class@SpringAnimation] is usually a good
+	 * fit for this.
+	 *
+	 * Params:
+	 *     velocity = the velocity of the swipe
+	 *     to = the progress value to animate to
+	 *
+	 * Since: 1.0
+	 */
+	gulong addOnEndSwipe(void delegate(double, double, SwipeTracker) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	{
+		return Signals.connect(this, "end-swipe", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+	}
+
+	/**
 	 * This signal is emitted when a possible swipe is detected.
 	 *
 	 * The @direction value can be used to restrict the swipe to a certain
@@ -251,23 +281,9 @@ public class SwipeTracker : ObjectG, OrientableIF
 	 *
 	 * Since: 1.0
 	 */
-	gulong addOnBeginSwipe(void delegate(AdwNavigationDirection, SwipeTracker) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	gulong addOnPrepare(void delegate(AdwNavigationDirection, SwipeTracker) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
 	{
-		return Signals.connect(this, "begin-swipe", dlg, connectFlags ^ ConnectFlags.SWAPPED);
-	}
-
-	/**
-	 * This signal is emitted as soon as the gesture has stopped.
-	 *
-	 * Params:
-	 *     duration = snap-back animation duration in milliseconds
-	 *     to = the progress value to animate to
-	 *
-	 * Since: 1.0
-	 */
-	gulong addOnEndSwipe(void delegate(long, double, SwipeTracker) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		return Signals.connect(this, "end-swipe", dlg, connectFlags ^ ConnectFlags.SWAPPED);
+		return Signals.connect(this, "prepare", dlg, connectFlags ^ ConnectFlags.SWAPPED);
 	}
 
 	/**

@@ -32,6 +32,11 @@ private import gtk.Widget;
 /**
  * A [class@Gtk.ListBoxRow] used to choose from a list of items.
  * 
+ * <picture>
+ * <source srcset="combo-row-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="combo-row.png" alt="combo-row">
+ * </picture>
+ * 
  * The `AdwComboRow` widget allows the user to choose from a list of valid
  * choices. The row displays the selected choice. When activated, the row
  * displays a popover which allows the user to make a new choice.
@@ -45,7 +50,7 @@ private import gtk.Widget;
  * `AdwComboRow` has a main CSS node with name `row` and the `.combo` style
  * class.
  * 
- * Its popover has the node named `popover` with the `.combo` style class, it
+ * Its popover has the node named `popover` with the `.menu` style class, it
  * contains a [class@Gtk.ScrolledWindow], which in turn contains a
  * [class@Gtk.ListView], both are accessible via their regular nodes.
  * 
@@ -190,8 +195,8 @@ public class ComboRow : ActionRow
 	/**
 	 * Gets the position of the selected item.
 	 *
-	 * Returns: the position of the selected item, or `GTK_INVALID_LIST_POSITION`
-	 *     if no item is selected
+	 * Returns: the position of the selected item, or
+	 *     [const@Gtk.INVALID_LIST_POSITION] if no item is selected
 	 *
 	 * Since: 1.0
 	 */
@@ -289,7 +294,8 @@ public class ComboRow : ActionRow
 	 * Selects the item at the given position.
 	 *
 	 * Params:
-	 *     position = the position of the item to select, or `GTK_INVALID_LIST_POSITION`
+	 *     position = the position of the item to select, or
+	 *         [const@Gtk.INVALID_LIST_POSITION]
 	 *
 	 * Since: 1.0
 	 */

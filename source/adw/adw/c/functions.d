@@ -50,6 +50,23 @@ shared static this()
 	Linker.link(adw_action_row_set_subtitle_lines, "adw_action_row_set_subtitle_lines", LIBRARY_ADW);
 	Linker.link(adw_action_row_set_title_lines, "adw_action_row_set_title_lines", LIBRARY_ADW);
 
+	// adw.Animation
+
+	Linker.link(adw_animation_get_type, "adw_animation_get_type", LIBRARY_ADW);
+	Linker.link(adw_animation_get_state, "adw_animation_get_state", LIBRARY_ADW);
+	Linker.link(adw_animation_get_target, "adw_animation_get_target", LIBRARY_ADW);
+	Linker.link(adw_animation_get_value, "adw_animation_get_value", LIBRARY_ADW);
+	Linker.link(adw_animation_get_widget, "adw_animation_get_widget", LIBRARY_ADW);
+	Linker.link(adw_animation_pause, "adw_animation_pause", LIBRARY_ADW);
+	Linker.link(adw_animation_play, "adw_animation_play", LIBRARY_ADW);
+	Linker.link(adw_animation_reset, "adw_animation_reset", LIBRARY_ADW);
+	Linker.link(adw_animation_resume, "adw_animation_resume", LIBRARY_ADW);
+	Linker.link(adw_animation_skip, "adw_animation_skip", LIBRARY_ADW);
+
+	// adw.AnimationTarget
+
+	Linker.link(adw_animation_target_get_type, "adw_animation_target_get_type", LIBRARY_ADW);
+
 	// adw.Application
 
 	Linker.link(adw_application_get_type, "adw_application_get_type", LIBRARY_ADW);
@@ -97,6 +114,11 @@ shared static this()
 	Linker.link(adw_button_content_set_label, "adw_button_content_set_label", LIBRARY_ADW);
 	Linker.link(adw_button_content_set_use_underline, "adw_button_content_set_use_underline", LIBRARY_ADW);
 
+	// adw.CallbackAnimationTarget
+
+	Linker.link(adw_callback_animation_target_get_type, "adw_callback_animation_target_get_type", LIBRARY_ADW);
+	Linker.link(adw_callback_animation_target_new, "adw_callback_animation_target_new", LIBRARY_ADW);
+
 	// adw.Carousel
 
 	Linker.link(adw_carousel_get_type, "adw_carousel_get_type", LIBRARY_ADW);
@@ -105,25 +127,24 @@ shared static this()
 	Linker.link(adw_carousel_get_allow_long_swipes, "adw_carousel_get_allow_long_swipes", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_allow_mouse_drag, "adw_carousel_get_allow_mouse_drag", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_allow_scroll_wheel, "adw_carousel_get_allow_scroll_wheel", LIBRARY_ADW);
-	Linker.link(adw_carousel_get_animation_duration, "adw_carousel_get_animation_duration", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_interactive, "adw_carousel_get_interactive", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_n_pages, "adw_carousel_get_n_pages", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_nth_page, "adw_carousel_get_nth_page", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_position, "adw_carousel_get_position", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_reveal_duration, "adw_carousel_get_reveal_duration", LIBRARY_ADW);
+	Linker.link(adw_carousel_get_scroll_params, "adw_carousel_get_scroll_params", LIBRARY_ADW);
 	Linker.link(adw_carousel_get_spacing, "adw_carousel_get_spacing", LIBRARY_ADW);
 	Linker.link(adw_carousel_insert, "adw_carousel_insert", LIBRARY_ADW);
 	Linker.link(adw_carousel_prepend, "adw_carousel_prepend", LIBRARY_ADW);
 	Linker.link(adw_carousel_remove, "adw_carousel_remove", LIBRARY_ADW);
 	Linker.link(adw_carousel_reorder, "adw_carousel_reorder", LIBRARY_ADW);
 	Linker.link(adw_carousel_scroll_to, "adw_carousel_scroll_to", LIBRARY_ADW);
-	Linker.link(adw_carousel_scroll_to_full, "adw_carousel_scroll_to_full", LIBRARY_ADW);
 	Linker.link(adw_carousel_set_allow_long_swipes, "adw_carousel_set_allow_long_swipes", LIBRARY_ADW);
 	Linker.link(adw_carousel_set_allow_mouse_drag, "adw_carousel_set_allow_mouse_drag", LIBRARY_ADW);
 	Linker.link(adw_carousel_set_allow_scroll_wheel, "adw_carousel_set_allow_scroll_wheel", LIBRARY_ADW);
-	Linker.link(adw_carousel_set_animation_duration, "adw_carousel_set_animation_duration", LIBRARY_ADW);
 	Linker.link(adw_carousel_set_interactive, "adw_carousel_set_interactive", LIBRARY_ADW);
 	Linker.link(adw_carousel_set_reveal_duration, "adw_carousel_set_reveal_duration", LIBRARY_ADW);
+	Linker.link(adw_carousel_set_scroll_params, "adw_carousel_set_scroll_params", LIBRARY_ADW);
 	Linker.link(adw_carousel_set_spacing, "adw_carousel_set_spacing", LIBRARY_ADW);
 
 	// adw.CarouselIndicatorDots
@@ -235,8 +256,8 @@ shared static this()
 	Linker.link(adw_flap_get_folded, "adw_flap_get_folded", LIBRARY_ADW);
 	Linker.link(adw_flap_get_locked, "adw_flap_get_locked", LIBRARY_ADW);
 	Linker.link(adw_flap_get_modal, "adw_flap_get_modal", LIBRARY_ADW);
-	Linker.link(adw_flap_get_reveal_duration, "adw_flap_get_reveal_duration", LIBRARY_ADW);
 	Linker.link(adw_flap_get_reveal_flap, "adw_flap_get_reveal_flap", LIBRARY_ADW);
+	Linker.link(adw_flap_get_reveal_params, "adw_flap_get_reveal_params", LIBRARY_ADW);
 	Linker.link(adw_flap_get_reveal_progress, "adw_flap_get_reveal_progress", LIBRARY_ADW);
 	Linker.link(adw_flap_get_separator, "adw_flap_get_separator", LIBRARY_ADW);
 	Linker.link(adw_flap_get_swipe_to_close, "adw_flap_get_swipe_to_close", LIBRARY_ADW);
@@ -250,8 +271,8 @@ shared static this()
 	Linker.link(adw_flap_set_fold_threshold_policy, "adw_flap_set_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_flap_set_locked, "adw_flap_set_locked", LIBRARY_ADW);
 	Linker.link(adw_flap_set_modal, "adw_flap_set_modal", LIBRARY_ADW);
-	Linker.link(adw_flap_set_reveal_duration, "adw_flap_set_reveal_duration", LIBRARY_ADW);
 	Linker.link(adw_flap_set_reveal_flap, "adw_flap_set_reveal_flap", LIBRARY_ADW);
+	Linker.link(adw_flap_set_reveal_params, "adw_flap_set_reveal_params", LIBRARY_ADW);
 	Linker.link(adw_flap_set_separator, "adw_flap_set_separator", LIBRARY_ADW);
 	Linker.link(adw_flap_set_swipe_to_close, "adw_flap_set_swipe_to_close", LIBRARY_ADW);
 	Linker.link(adw_flap_set_swipe_to_open, "adw_flap_set_swipe_to_open", LIBRARY_ADW);
@@ -281,11 +302,11 @@ shared static this()
 	Linker.link(adw_leaflet_new, "adw_leaflet_new", LIBRARY_ADW);
 	Linker.link(adw_leaflet_append, "adw_leaflet_append", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_adjacent_child, "adw_leaflet_get_adjacent_child", LIBRARY_ADW);
-	Linker.link(adw_leaflet_get_can_swipe_back, "adw_leaflet_get_can_swipe_back", LIBRARY_ADW);
-	Linker.link(adw_leaflet_get_can_swipe_forward, "adw_leaflet_get_can_swipe_forward", LIBRARY_ADW);
+	Linker.link(adw_leaflet_get_can_navigate_back, "adw_leaflet_get_can_navigate_back", LIBRARY_ADW);
+	Linker.link(adw_leaflet_get_can_navigate_forward, "adw_leaflet_get_can_navigate_forward", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_can_unfold, "adw_leaflet_get_can_unfold", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_child_by_name, "adw_leaflet_get_child_by_name", LIBRARY_ADW);
-	Linker.link(adw_leaflet_get_child_transition_duration, "adw_leaflet_get_child_transition_duration", LIBRARY_ADW);
+	Linker.link(adw_leaflet_get_child_transition_params, "adw_leaflet_get_child_transition_params", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_child_transition_running, "adw_leaflet_get_child_transition_running", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_fold_threshold_policy, "adw_leaflet_get_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_leaflet_get_folded, "adw_leaflet_get_folded", LIBRARY_ADW);
@@ -301,10 +322,10 @@ shared static this()
 	Linker.link(adw_leaflet_prepend, "adw_leaflet_prepend", LIBRARY_ADW);
 	Linker.link(adw_leaflet_remove, "adw_leaflet_remove", LIBRARY_ADW);
 	Linker.link(adw_leaflet_reorder_child_after, "adw_leaflet_reorder_child_after", LIBRARY_ADW);
-	Linker.link(adw_leaflet_set_can_swipe_back, "adw_leaflet_set_can_swipe_back", LIBRARY_ADW);
-	Linker.link(adw_leaflet_set_can_swipe_forward, "adw_leaflet_set_can_swipe_forward", LIBRARY_ADW);
+	Linker.link(adw_leaflet_set_can_navigate_back, "adw_leaflet_set_can_navigate_back", LIBRARY_ADW);
+	Linker.link(adw_leaflet_set_can_navigate_forward, "adw_leaflet_set_can_navigate_forward", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_can_unfold, "adw_leaflet_set_can_unfold", LIBRARY_ADW);
-	Linker.link(adw_leaflet_set_child_transition_duration, "adw_leaflet_set_child_transition_duration", LIBRARY_ADW);
+	Linker.link(adw_leaflet_set_child_transition_params, "adw_leaflet_set_child_transition_params", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_fold_threshold_policy, "adw_leaflet_set_fold_threshold_policy", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_homogeneous, "adw_leaflet_set_homogeneous", LIBRARY_ADW);
 	Linker.link(adw_leaflet_set_mode_transition_duration, "adw_leaflet_set_mode_transition_duration", LIBRARY_ADW);
@@ -361,14 +382,15 @@ shared static this()
 	Linker.link(adw_preferences_window_get_type, "adw_preferences_window_get_type", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_new, "adw_preferences_window_new", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_add, "adw_preferences_window_add", LIBRARY_ADW);
+	Linker.link(adw_preferences_window_add_toast, "adw_preferences_window_add_toast", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_close_subpage, "adw_preferences_window_close_subpage", LIBRARY_ADW);
-	Linker.link(adw_preferences_window_get_can_swipe_back, "adw_preferences_window_get_can_swipe_back", LIBRARY_ADW);
+	Linker.link(adw_preferences_window_get_can_navigate_back, "adw_preferences_window_get_can_navigate_back", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_get_search_enabled, "adw_preferences_window_get_search_enabled", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_get_visible_page, "adw_preferences_window_get_visible_page", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_get_visible_page_name, "adw_preferences_window_get_visible_page_name", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_present_subpage, "adw_preferences_window_present_subpage", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_remove, "adw_preferences_window_remove", LIBRARY_ADW);
-	Linker.link(adw_preferences_window_set_can_swipe_back, "adw_preferences_window_set_can_swipe_back", LIBRARY_ADW);
+	Linker.link(adw_preferences_window_set_can_navigate_back, "adw_preferences_window_set_can_navigate_back", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_set_search_enabled, "adw_preferences_window_set_search_enabled", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_set_visible_page, "adw_preferences_window_set_visible_page", LIBRARY_ADW);
 	Linker.link(adw_preferences_window_set_visible_page_name, "adw_preferences_window_set_visible_page_name", LIBRARY_ADW);
@@ -393,6 +415,37 @@ shared static this()
 	Linker.link(adw_split_button_set_menu_model, "adw_split_button_set_menu_model", LIBRARY_ADW);
 	Linker.link(adw_split_button_set_popover, "adw_split_button_set_popover", LIBRARY_ADW);
 	Linker.link(adw_split_button_set_use_underline, "adw_split_button_set_use_underline", LIBRARY_ADW);
+
+	// adw.SpringAnimation
+
+	Linker.link(adw_spring_animation_get_type, "adw_spring_animation_get_type", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_new, "adw_spring_animation_new", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_clamp, "adw_spring_animation_get_clamp", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_epsilon, "adw_spring_animation_get_epsilon", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_estimated_duration, "adw_spring_animation_get_estimated_duration", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_initial_velocity, "adw_spring_animation_get_initial_velocity", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_spring_params, "adw_spring_animation_get_spring_params", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_value_from, "adw_spring_animation_get_value_from", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_value_to, "adw_spring_animation_get_value_to", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_get_velocity, "adw_spring_animation_get_velocity", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_set_clamp, "adw_spring_animation_set_clamp", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_set_epsilon, "adw_spring_animation_set_epsilon", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_set_initial_velocity, "adw_spring_animation_set_initial_velocity", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_set_spring_params, "adw_spring_animation_set_spring_params", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_set_value_from, "adw_spring_animation_set_value_from", LIBRARY_ADW);
+	Linker.link(adw_spring_animation_set_value_to, "adw_spring_animation_set_value_to", LIBRARY_ADW);
+
+	// adw.SpringParams
+
+	Linker.link(adw_spring_params_get_type, "adw_spring_params_get_type", LIBRARY_ADW);
+	Linker.link(adw_spring_params_new, "adw_spring_params_new", LIBRARY_ADW);
+	Linker.link(adw_spring_params_new_full, "adw_spring_params_new_full", LIBRARY_ADW);
+	Linker.link(adw_spring_params_get_damping, "adw_spring_params_get_damping", LIBRARY_ADW);
+	Linker.link(adw_spring_params_get_damping_ratio, "adw_spring_params_get_damping_ratio", LIBRARY_ADW);
+	Linker.link(adw_spring_params_get_mass, "adw_spring_params_get_mass", LIBRARY_ADW);
+	Linker.link(adw_spring_params_get_stiffness, "adw_spring_params_get_stiffness", LIBRARY_ADW);
+	Linker.link(adw_spring_params_ref, "adw_spring_params_ref", LIBRARY_ADW);
+	Linker.link(adw_spring_params_unref, "adw_spring_params_unref", LIBRARY_ADW);
 
 	// adw.Squeezer
 
@@ -543,7 +596,6 @@ shared static this()
 	Linker.link(adw_tab_view_get_page_position, "adw_tab_view_get_page_position", LIBRARY_ADW);
 	Linker.link(adw_tab_view_get_pages, "adw_tab_view_get_pages", LIBRARY_ADW);
 	Linker.link(adw_tab_view_get_selected_page, "adw_tab_view_get_selected_page", LIBRARY_ADW);
-	Linker.link(adw_tab_view_get_shortcut_widget, "adw_tab_view_get_shortcut_widget", LIBRARY_ADW);
 	Linker.link(adw_tab_view_insert, "adw_tab_view_insert", LIBRARY_ADW);
 	Linker.link(adw_tab_view_insert_pinned, "adw_tab_view_insert_pinned", LIBRARY_ADW);
 	Linker.link(adw_tab_view_prepend, "adw_tab_view_prepend", LIBRARY_ADW);
@@ -559,8 +611,54 @@ shared static this()
 	Linker.link(adw_tab_view_set_menu_model, "adw_tab_view_set_menu_model", LIBRARY_ADW);
 	Linker.link(adw_tab_view_set_page_pinned, "adw_tab_view_set_page_pinned", LIBRARY_ADW);
 	Linker.link(adw_tab_view_set_selected_page, "adw_tab_view_set_selected_page", LIBRARY_ADW);
-	Linker.link(adw_tab_view_set_shortcut_widget, "adw_tab_view_set_shortcut_widget", LIBRARY_ADW);
 	Linker.link(adw_tab_view_transfer_page, "adw_tab_view_transfer_page", LIBRARY_ADW);
+
+	// adw.TimedAnimation
+
+	Linker.link(adw_timed_animation_get_type, "adw_timed_animation_get_type", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_new, "adw_timed_animation_new", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_get_alternate, "adw_timed_animation_get_alternate", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_get_duration, "adw_timed_animation_get_duration", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_get_easing, "adw_timed_animation_get_easing", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_get_repeat_count, "adw_timed_animation_get_repeat_count", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_get_reverse, "adw_timed_animation_get_reverse", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_get_value_from, "adw_timed_animation_get_value_from", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_get_value_to, "adw_timed_animation_get_value_to", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_set_alternate, "adw_timed_animation_set_alternate", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_set_duration, "adw_timed_animation_set_duration", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_set_easing, "adw_timed_animation_set_easing", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_set_repeat_count, "adw_timed_animation_set_repeat_count", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_set_reverse, "adw_timed_animation_set_reverse", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_set_value_from, "adw_timed_animation_set_value_from", LIBRARY_ADW);
+	Linker.link(adw_timed_animation_set_value_to, "adw_timed_animation_set_value_to", LIBRARY_ADW);
+
+	// adw.Toast
+
+	Linker.link(adw_toast_get_type, "adw_toast_get_type", LIBRARY_ADW);
+	Linker.link(adw_toast_new, "adw_toast_new", LIBRARY_ADW);
+	Linker.link(adw_toast_dismiss, "adw_toast_dismiss", LIBRARY_ADW);
+	Linker.link(adw_toast_get_action_name, "adw_toast_get_action_name", LIBRARY_ADW);
+	Linker.link(adw_toast_get_action_target_value, "adw_toast_get_action_target_value", LIBRARY_ADW);
+	Linker.link(adw_toast_get_button_label, "adw_toast_get_button_label", LIBRARY_ADW);
+	Linker.link(adw_toast_get_priority, "adw_toast_get_priority", LIBRARY_ADW);
+	Linker.link(adw_toast_get_timeout, "adw_toast_get_timeout", LIBRARY_ADW);
+	Linker.link(adw_toast_get_title, "adw_toast_get_title", LIBRARY_ADW);
+	Linker.link(adw_toast_set_action_name, "adw_toast_set_action_name", LIBRARY_ADW);
+	Linker.link(adw_toast_set_action_target, "adw_toast_set_action_target", LIBRARY_ADW);
+	Linker.link(adw_toast_set_action_target_value, "adw_toast_set_action_target_value", LIBRARY_ADW);
+	Linker.link(adw_toast_set_button_label, "adw_toast_set_button_label", LIBRARY_ADW);
+	Linker.link(adw_toast_set_detailed_action_name, "adw_toast_set_detailed_action_name", LIBRARY_ADW);
+	Linker.link(adw_toast_set_priority, "adw_toast_set_priority", LIBRARY_ADW);
+	Linker.link(adw_toast_set_timeout, "adw_toast_set_timeout", LIBRARY_ADW);
+	Linker.link(adw_toast_set_title, "adw_toast_set_title", LIBRARY_ADW);
+
+	// adw.ToastOverlay
+
+	Linker.link(adw_toast_overlay_get_type, "adw_toast_overlay_get_type", LIBRARY_ADW);
+	Linker.link(adw_toast_overlay_new, "adw_toast_overlay_new", LIBRARY_ADW);
+	Linker.link(adw_toast_overlay_add_toast, "adw_toast_overlay_add_toast", LIBRARY_ADW);
+	Linker.link(adw_toast_overlay_get_child, "adw_toast_overlay_get_child", LIBRARY_ADW);
+	Linker.link(adw_toast_overlay_set_child, "adw_toast_overlay_set_child", LIBRARY_ADW);
 
 	// adw.ViewStack
 
@@ -571,16 +669,13 @@ shared static this()
 	Linker.link(adw_view_stack_add_titled, "adw_view_stack_add_titled", LIBRARY_ADW);
 	Linker.link(adw_view_stack_get_child_by_name, "adw_view_stack_get_child_by_name", LIBRARY_ADW);
 	Linker.link(adw_view_stack_get_hhomogeneous, "adw_view_stack_get_hhomogeneous", LIBRARY_ADW);
-	Linker.link(adw_view_stack_get_interpolate_size, "adw_view_stack_get_interpolate_size", LIBRARY_ADW);
 	Linker.link(adw_view_stack_get_page, "adw_view_stack_get_page", LIBRARY_ADW);
 	Linker.link(adw_view_stack_get_pages, "adw_view_stack_get_pages", LIBRARY_ADW);
-	Linker.link(adw_view_stack_get_transition_running, "adw_view_stack_get_transition_running", LIBRARY_ADW);
 	Linker.link(adw_view_stack_get_vhomogeneous, "adw_view_stack_get_vhomogeneous", LIBRARY_ADW);
 	Linker.link(adw_view_stack_get_visible_child, "adw_view_stack_get_visible_child", LIBRARY_ADW);
 	Linker.link(adw_view_stack_get_visible_child_name, "adw_view_stack_get_visible_child_name", LIBRARY_ADW);
 	Linker.link(adw_view_stack_remove, "adw_view_stack_remove", LIBRARY_ADW);
 	Linker.link(adw_view_stack_set_hhomogeneous, "adw_view_stack_set_hhomogeneous", LIBRARY_ADW);
-	Linker.link(adw_view_stack_set_interpolate_size, "adw_view_stack_set_interpolate_size", LIBRARY_ADW);
 	Linker.link(adw_view_stack_set_vhomogeneous, "adw_view_stack_set_vhomogeneous", LIBRARY_ADW);
 	Linker.link(adw_view_stack_set_visible_child, "adw_view_stack_set_visible_child", LIBRARY_ADW);
 	Linker.link(adw_view_stack_set_visible_child_name, "adw_view_stack_set_visible_child_name", LIBRARY_ADW);
@@ -675,6 +770,23 @@ __gshared extern(C)
 	void function(AdwActionRow* self, int subtitleLines) c_adw_action_row_set_subtitle_lines;
 	void function(AdwActionRow* self, int titleLines) c_adw_action_row_set_title_lines;
 
+	// adw.Animation
+
+	GType function() c_adw_animation_get_type;
+	AdwAnimationState function(AdwAnimation* self) c_adw_animation_get_state;
+	AdwAnimationTarget* function(AdwAnimation* self) c_adw_animation_get_target;
+	double function(AdwAnimation* self) c_adw_animation_get_value;
+	GtkWidget* function(AdwAnimation* self) c_adw_animation_get_widget;
+	void function(AdwAnimation* self) c_adw_animation_pause;
+	void function(AdwAnimation* self) c_adw_animation_play;
+	void function(AdwAnimation* self) c_adw_animation_reset;
+	void function(AdwAnimation* self) c_adw_animation_resume;
+	void function(AdwAnimation* self) c_adw_animation_skip;
+
+	// adw.AnimationTarget
+
+	GType function() c_adw_animation_target_get_type;
+
 	// adw.Application
 
 	GType function() c_adw_application_get_type;
@@ -722,6 +834,11 @@ __gshared extern(C)
 	void function(AdwButtonContent* self, const(char)* label) c_adw_button_content_set_label;
 	void function(AdwButtonContent* self, int useUnderline) c_adw_button_content_set_use_underline;
 
+	// adw.CallbackAnimationTarget
+
+	GType function() c_adw_callback_animation_target_get_type;
+	AdwAnimationTarget* function(AdwAnimationTargetFunc callback, void* userData, GDestroyNotify destroy) c_adw_callback_animation_target_new;
+
 	// adw.Carousel
 
 	GType function() c_adw_carousel_get_type;
@@ -730,25 +847,24 @@ __gshared extern(C)
 	int function(AdwCarousel* self) c_adw_carousel_get_allow_long_swipes;
 	int function(AdwCarousel* self) c_adw_carousel_get_allow_mouse_drag;
 	int function(AdwCarousel* self) c_adw_carousel_get_allow_scroll_wheel;
-	uint function(AdwCarousel* self) c_adw_carousel_get_animation_duration;
 	int function(AdwCarousel* self) c_adw_carousel_get_interactive;
 	uint function(AdwCarousel* self) c_adw_carousel_get_n_pages;
 	GtkWidget* function(AdwCarousel* self, uint n) c_adw_carousel_get_nth_page;
 	double function(AdwCarousel* self) c_adw_carousel_get_position;
 	uint function(AdwCarousel* self) c_adw_carousel_get_reveal_duration;
+	AdwSpringParams* function(AdwCarousel* self) c_adw_carousel_get_scroll_params;
 	uint function(AdwCarousel* self) c_adw_carousel_get_spacing;
 	void function(AdwCarousel* self, GtkWidget* child, int position) c_adw_carousel_insert;
 	void function(AdwCarousel* self, GtkWidget* child) c_adw_carousel_prepend;
 	void function(AdwCarousel* self, GtkWidget* child) c_adw_carousel_remove;
 	void function(AdwCarousel* self, GtkWidget* child, int position) c_adw_carousel_reorder;
-	void function(AdwCarousel* self, GtkWidget* widget) c_adw_carousel_scroll_to;
-	void function(AdwCarousel* self, GtkWidget* widget, long duration) c_adw_carousel_scroll_to_full;
+	void function(AdwCarousel* self, GtkWidget* widget, int animate) c_adw_carousel_scroll_to;
 	void function(AdwCarousel* self, int allowLongSwipes) c_adw_carousel_set_allow_long_swipes;
 	void function(AdwCarousel* self, int allowMouseDrag) c_adw_carousel_set_allow_mouse_drag;
 	void function(AdwCarousel* self, int allowScrollWheel) c_adw_carousel_set_allow_scroll_wheel;
-	void function(AdwCarousel* self, uint duration) c_adw_carousel_set_animation_duration;
 	void function(AdwCarousel* self, int interactive) c_adw_carousel_set_interactive;
 	void function(AdwCarousel* self, uint revealDuration) c_adw_carousel_set_reveal_duration;
+	void function(AdwCarousel* self, AdwSpringParams* params) c_adw_carousel_set_scroll_params;
 	void function(AdwCarousel* self, uint spacing) c_adw_carousel_set_spacing;
 
 	// adw.CarouselIndicatorDots
@@ -860,8 +976,8 @@ __gshared extern(C)
 	int function(AdwFlap* self) c_adw_flap_get_folded;
 	int function(AdwFlap* self) c_adw_flap_get_locked;
 	int function(AdwFlap* self) c_adw_flap_get_modal;
-	uint function(AdwFlap* self) c_adw_flap_get_reveal_duration;
 	int function(AdwFlap* self) c_adw_flap_get_reveal_flap;
+	AdwSpringParams* function(AdwFlap* self) c_adw_flap_get_reveal_params;
 	double function(AdwFlap* self) c_adw_flap_get_reveal_progress;
 	GtkWidget* function(AdwFlap* self) c_adw_flap_get_separator;
 	int function(AdwFlap* self) c_adw_flap_get_swipe_to_close;
@@ -875,8 +991,8 @@ __gshared extern(C)
 	void function(AdwFlap* self, AdwFoldThresholdPolicy policy) c_adw_flap_set_fold_threshold_policy;
 	void function(AdwFlap* self, int locked) c_adw_flap_set_locked;
 	void function(AdwFlap* self, int modal) c_adw_flap_set_modal;
-	void function(AdwFlap* self, uint duration) c_adw_flap_set_reveal_duration;
 	void function(AdwFlap* self, int revealFlap) c_adw_flap_set_reveal_flap;
+	void function(AdwFlap* self, AdwSpringParams* params) c_adw_flap_set_reveal_params;
 	void function(AdwFlap* self, GtkWidget* separator) c_adw_flap_set_separator;
 	void function(AdwFlap* self, int swipeToClose) c_adw_flap_set_swipe_to_close;
 	void function(AdwFlap* self, int swipeToOpen) c_adw_flap_set_swipe_to_open;
@@ -906,11 +1022,11 @@ __gshared extern(C)
 	GtkWidget* function() c_adw_leaflet_new;
 	AdwLeafletPage* function(AdwLeaflet* self, GtkWidget* child) c_adw_leaflet_append;
 	GtkWidget* function(AdwLeaflet* self, AdwNavigationDirection direction) c_adw_leaflet_get_adjacent_child;
-	int function(AdwLeaflet* self) c_adw_leaflet_get_can_swipe_back;
-	int function(AdwLeaflet* self) c_adw_leaflet_get_can_swipe_forward;
+	int function(AdwLeaflet* self) c_adw_leaflet_get_can_navigate_back;
+	int function(AdwLeaflet* self) c_adw_leaflet_get_can_navigate_forward;
 	int function(AdwLeaflet* self) c_adw_leaflet_get_can_unfold;
 	GtkWidget* function(AdwLeaflet* self, const(char)* name) c_adw_leaflet_get_child_by_name;
-	uint function(AdwLeaflet* self) c_adw_leaflet_get_child_transition_duration;
+	AdwSpringParams* function(AdwLeaflet* self) c_adw_leaflet_get_child_transition_params;
 	int function(AdwLeaflet* self) c_adw_leaflet_get_child_transition_running;
 	AdwFoldThresholdPolicy function(AdwLeaflet* self) c_adw_leaflet_get_fold_threshold_policy;
 	int function(AdwLeaflet* self) c_adw_leaflet_get_folded;
@@ -926,10 +1042,10 @@ __gshared extern(C)
 	AdwLeafletPage* function(AdwLeaflet* self, GtkWidget* child) c_adw_leaflet_prepend;
 	void function(AdwLeaflet* self, GtkWidget* child) c_adw_leaflet_remove;
 	void function(AdwLeaflet* self, GtkWidget* child, GtkWidget* sibling) c_adw_leaflet_reorder_child_after;
-	void function(AdwLeaflet* self, int canSwipeBack) c_adw_leaflet_set_can_swipe_back;
-	void function(AdwLeaflet* self, int canSwipeForward) c_adw_leaflet_set_can_swipe_forward;
+	void function(AdwLeaflet* self, int canNavigateBack) c_adw_leaflet_set_can_navigate_back;
+	void function(AdwLeaflet* self, int canNavigateForward) c_adw_leaflet_set_can_navigate_forward;
 	void function(AdwLeaflet* self, int canUnfold) c_adw_leaflet_set_can_unfold;
-	void function(AdwLeaflet* self, uint duration) c_adw_leaflet_set_child_transition_duration;
+	void function(AdwLeaflet* self, AdwSpringParams* params) c_adw_leaflet_set_child_transition_params;
 	void function(AdwLeaflet* self, AdwFoldThresholdPolicy policy) c_adw_leaflet_set_fold_threshold_policy;
 	void function(AdwLeaflet* self, int homogeneous) c_adw_leaflet_set_homogeneous;
 	void function(AdwLeaflet* self, uint duration) c_adw_leaflet_set_mode_transition_duration;
@@ -986,14 +1102,15 @@ __gshared extern(C)
 	GType function() c_adw_preferences_window_get_type;
 	GtkWidget* function() c_adw_preferences_window_new;
 	void function(AdwPreferencesWindow* self, AdwPreferencesPage* page) c_adw_preferences_window_add;
+	void function(AdwPreferencesWindow* self, AdwToast* toast) c_adw_preferences_window_add_toast;
 	void function(AdwPreferencesWindow* self) c_adw_preferences_window_close_subpage;
-	int function(AdwPreferencesWindow* self) c_adw_preferences_window_get_can_swipe_back;
+	int function(AdwPreferencesWindow* self) c_adw_preferences_window_get_can_navigate_back;
 	int function(AdwPreferencesWindow* self) c_adw_preferences_window_get_search_enabled;
 	AdwPreferencesPage* function(AdwPreferencesWindow* self) c_adw_preferences_window_get_visible_page;
 	const(char)* function(AdwPreferencesWindow* self) c_adw_preferences_window_get_visible_page_name;
 	void function(AdwPreferencesWindow* self, GtkWidget* subpage) c_adw_preferences_window_present_subpage;
 	void function(AdwPreferencesWindow* self, AdwPreferencesPage* page) c_adw_preferences_window_remove;
-	void function(AdwPreferencesWindow* self, int canSwipeBack) c_adw_preferences_window_set_can_swipe_back;
+	void function(AdwPreferencesWindow* self, int canNavigateBack) c_adw_preferences_window_set_can_navigate_back;
 	void function(AdwPreferencesWindow* self, int searchEnabled) c_adw_preferences_window_set_search_enabled;
 	void function(AdwPreferencesWindow* self, AdwPreferencesPage* page) c_adw_preferences_window_set_visible_page;
 	void function(AdwPreferencesWindow* self, const(char)* name) c_adw_preferences_window_set_visible_page_name;
@@ -1018,6 +1135,37 @@ __gshared extern(C)
 	void function(AdwSplitButton* self, GMenuModel* menuModel) c_adw_split_button_set_menu_model;
 	void function(AdwSplitButton* self, GtkPopover* popover) c_adw_split_button_set_popover;
 	void function(AdwSplitButton* self, int useUnderline) c_adw_split_button_set_use_underline;
+
+	// adw.SpringAnimation
+
+	GType function() c_adw_spring_animation_get_type;
+	AdwAnimation* function(GtkWidget* widget, double from, double to, AdwSpringParams* springParams, AdwAnimationTarget* target) c_adw_spring_animation_new;
+	int function(AdwSpringAnimation* self) c_adw_spring_animation_get_clamp;
+	double function(AdwSpringAnimation* self) c_adw_spring_animation_get_epsilon;
+	uint function(AdwSpringAnimation* self) c_adw_spring_animation_get_estimated_duration;
+	double function(AdwSpringAnimation* self) c_adw_spring_animation_get_initial_velocity;
+	AdwSpringParams* function(AdwSpringAnimation* self) c_adw_spring_animation_get_spring_params;
+	double function(AdwSpringAnimation* self) c_adw_spring_animation_get_value_from;
+	double function(AdwSpringAnimation* self) c_adw_spring_animation_get_value_to;
+	double function(AdwSpringAnimation* self) c_adw_spring_animation_get_velocity;
+	void function(AdwSpringAnimation* self, int clamp) c_adw_spring_animation_set_clamp;
+	void function(AdwSpringAnimation* self, double epsilon) c_adw_spring_animation_set_epsilon;
+	void function(AdwSpringAnimation* self, double velocity) c_adw_spring_animation_set_initial_velocity;
+	void function(AdwSpringAnimation* self, AdwSpringParams* springParams) c_adw_spring_animation_set_spring_params;
+	void function(AdwSpringAnimation* self, double value) c_adw_spring_animation_set_value_from;
+	void function(AdwSpringAnimation* self, double value) c_adw_spring_animation_set_value_to;
+
+	// adw.SpringParams
+
+	GType function() c_adw_spring_params_get_type;
+	AdwSpringParams* function(double dampingRatio, double mass, double stiffness) c_adw_spring_params_new;
+	AdwSpringParams* function(double damping, double mass, double stiffness) c_adw_spring_params_new_full;
+	double function(AdwSpringParams* self) c_adw_spring_params_get_damping;
+	double function(AdwSpringParams* self) c_adw_spring_params_get_damping_ratio;
+	double function(AdwSpringParams* self) c_adw_spring_params_get_mass;
+	double function(AdwSpringParams* self) c_adw_spring_params_get_stiffness;
+	AdwSpringParams* function(AdwSpringParams* self) c_adw_spring_params_ref;
+	void function(AdwSpringParams* self) c_adw_spring_params_unref;
 
 	// adw.Squeezer
 
@@ -1168,7 +1316,6 @@ __gshared extern(C)
 	int function(AdwTabView* self, AdwTabPage* page) c_adw_tab_view_get_page_position;
 	GtkSelectionModel* function(AdwTabView* self) c_adw_tab_view_get_pages;
 	AdwTabPage* function(AdwTabView* self) c_adw_tab_view_get_selected_page;
-	GtkWidget* function(AdwTabView* self) c_adw_tab_view_get_shortcut_widget;
 	AdwTabPage* function(AdwTabView* self, GtkWidget* child, int position) c_adw_tab_view_insert;
 	AdwTabPage* function(AdwTabView* self, GtkWidget* child, int position) c_adw_tab_view_insert_pinned;
 	AdwTabPage* function(AdwTabView* self, GtkWidget* child) c_adw_tab_view_prepend;
@@ -1184,8 +1331,54 @@ __gshared extern(C)
 	void function(AdwTabView* self, GMenuModel* menuModel) c_adw_tab_view_set_menu_model;
 	void function(AdwTabView* self, AdwTabPage* page, int pinned) c_adw_tab_view_set_page_pinned;
 	void function(AdwTabView* self, AdwTabPage* selectedPage) c_adw_tab_view_set_selected_page;
-	void function(AdwTabView* self, GtkWidget* widget) c_adw_tab_view_set_shortcut_widget;
 	void function(AdwTabView* self, AdwTabPage* page, AdwTabView* otherView, int position) c_adw_tab_view_transfer_page;
+
+	// adw.TimedAnimation
+
+	GType function() c_adw_timed_animation_get_type;
+	AdwAnimation* function(GtkWidget* widget, double from, double to, uint duration, AdwAnimationTarget* target) c_adw_timed_animation_new;
+	int function(AdwTimedAnimation* self) c_adw_timed_animation_get_alternate;
+	uint function(AdwTimedAnimation* self) c_adw_timed_animation_get_duration;
+	AdwEasing function(AdwTimedAnimation* self) c_adw_timed_animation_get_easing;
+	uint function(AdwTimedAnimation* self) c_adw_timed_animation_get_repeat_count;
+	int function(AdwTimedAnimation* self) c_adw_timed_animation_get_reverse;
+	double function(AdwTimedAnimation* self) c_adw_timed_animation_get_value_from;
+	double function(AdwTimedAnimation* self) c_adw_timed_animation_get_value_to;
+	void function(AdwTimedAnimation* self, int alternate) c_adw_timed_animation_set_alternate;
+	void function(AdwTimedAnimation* self, uint duration) c_adw_timed_animation_set_duration;
+	void function(AdwTimedAnimation* self, AdwEasing easing) c_adw_timed_animation_set_easing;
+	void function(AdwTimedAnimation* self, uint repeatCount) c_adw_timed_animation_set_repeat_count;
+	void function(AdwTimedAnimation* self, int reverse) c_adw_timed_animation_set_reverse;
+	void function(AdwTimedAnimation* self, double value) c_adw_timed_animation_set_value_from;
+	void function(AdwTimedAnimation* self, double value) c_adw_timed_animation_set_value_to;
+
+	// adw.Toast
+
+	GType function() c_adw_toast_get_type;
+	AdwToast* function(const(char)* title) c_adw_toast_new;
+	void function(AdwToast* self) c_adw_toast_dismiss;
+	const(char)* function(AdwToast* self) c_adw_toast_get_action_name;
+	GVariant* function(AdwToast* self) c_adw_toast_get_action_target_value;
+	const(char)* function(AdwToast* self) c_adw_toast_get_button_label;
+	AdwToastPriority function(AdwToast* self) c_adw_toast_get_priority;
+	uint function(AdwToast* self) c_adw_toast_get_timeout;
+	const(char)* function(AdwToast* self) c_adw_toast_get_title;
+	void function(AdwToast* self, const(char)* actionName) c_adw_toast_set_action_name;
+	void function(AdwToast* self, const(char)* formatString, ... ) c_adw_toast_set_action_target;
+	void function(AdwToast* self, GVariant* actionTarget) c_adw_toast_set_action_target_value;
+	void function(AdwToast* self, const(char)* buttonLabel) c_adw_toast_set_button_label;
+	void function(AdwToast* self, const(char)* detailedActionName) c_adw_toast_set_detailed_action_name;
+	void function(AdwToast* self, AdwToastPriority priority) c_adw_toast_set_priority;
+	void function(AdwToast* self, uint timeout) c_adw_toast_set_timeout;
+	void function(AdwToast* self, const(char)* title) c_adw_toast_set_title;
+
+	// adw.ToastOverlay
+
+	GType function() c_adw_toast_overlay_get_type;
+	GtkWidget* function() c_adw_toast_overlay_new;
+	void function(AdwToastOverlay* self, AdwToast* toast) c_adw_toast_overlay_add_toast;
+	GtkWidget* function(AdwToastOverlay* self) c_adw_toast_overlay_get_child;
+	void function(AdwToastOverlay* self, GtkWidget* child) c_adw_toast_overlay_set_child;
 
 	// adw.ViewStack
 
@@ -1196,16 +1389,13 @@ __gshared extern(C)
 	AdwViewStackPage* function(AdwViewStack* self, GtkWidget* child, const(char)* name, const(char)* title) c_adw_view_stack_add_titled;
 	GtkWidget* function(AdwViewStack* self, const(char)* name) c_adw_view_stack_get_child_by_name;
 	int function(AdwViewStack* self) c_adw_view_stack_get_hhomogeneous;
-	int function(AdwViewStack* self) c_adw_view_stack_get_interpolate_size;
 	AdwViewStackPage* function(AdwViewStack* self, GtkWidget* child) c_adw_view_stack_get_page;
 	GtkSelectionModel* function(AdwViewStack* self) c_adw_view_stack_get_pages;
-	int function(AdwViewStack* self) c_adw_view_stack_get_transition_running;
 	int function(AdwViewStack* self) c_adw_view_stack_get_vhomogeneous;
 	GtkWidget* function(AdwViewStack* self) c_adw_view_stack_get_visible_child;
 	const(char)* function(AdwViewStack* self) c_adw_view_stack_get_visible_child_name;
 	void function(AdwViewStack* self, GtkWidget* child) c_adw_view_stack_remove;
 	void function(AdwViewStack* self, int hhomogeneous) c_adw_view_stack_set_hhomogeneous;
-	void function(AdwViewStack* self, int interpolateSize) c_adw_view_stack_set_interpolate_size;
 	void function(AdwViewStack* self, int vhomogeneous) c_adw_view_stack_set_vhomogeneous;
 	void function(AdwViewStack* self, GtkWidget* child) c_adw_view_stack_set_visible_child;
 	void function(AdwViewStack* self, const(char)* name) c_adw_view_stack_set_visible_child_name;
@@ -1298,6 +1488,23 @@ alias c_adw_action_row_set_subtitle adw_action_row_set_subtitle;
 alias c_adw_action_row_set_subtitle_lines adw_action_row_set_subtitle_lines;
 alias c_adw_action_row_set_title_lines adw_action_row_set_title_lines;
 
+// adw.Animation
+
+alias c_adw_animation_get_type adw_animation_get_type;
+alias c_adw_animation_get_state adw_animation_get_state;
+alias c_adw_animation_get_target adw_animation_get_target;
+alias c_adw_animation_get_value adw_animation_get_value;
+alias c_adw_animation_get_widget adw_animation_get_widget;
+alias c_adw_animation_pause adw_animation_pause;
+alias c_adw_animation_play adw_animation_play;
+alias c_adw_animation_reset adw_animation_reset;
+alias c_adw_animation_resume adw_animation_resume;
+alias c_adw_animation_skip adw_animation_skip;
+
+// adw.AnimationTarget
+
+alias c_adw_animation_target_get_type adw_animation_target_get_type;
+
 // adw.Application
 
 alias c_adw_application_get_type adw_application_get_type;
@@ -1345,6 +1552,11 @@ alias c_adw_button_content_set_icon_name adw_button_content_set_icon_name;
 alias c_adw_button_content_set_label adw_button_content_set_label;
 alias c_adw_button_content_set_use_underline adw_button_content_set_use_underline;
 
+// adw.CallbackAnimationTarget
+
+alias c_adw_callback_animation_target_get_type adw_callback_animation_target_get_type;
+alias c_adw_callback_animation_target_new adw_callback_animation_target_new;
+
 // adw.Carousel
 
 alias c_adw_carousel_get_type adw_carousel_get_type;
@@ -1353,25 +1565,24 @@ alias c_adw_carousel_append adw_carousel_append;
 alias c_adw_carousel_get_allow_long_swipes adw_carousel_get_allow_long_swipes;
 alias c_adw_carousel_get_allow_mouse_drag adw_carousel_get_allow_mouse_drag;
 alias c_adw_carousel_get_allow_scroll_wheel adw_carousel_get_allow_scroll_wheel;
-alias c_adw_carousel_get_animation_duration adw_carousel_get_animation_duration;
 alias c_adw_carousel_get_interactive adw_carousel_get_interactive;
 alias c_adw_carousel_get_n_pages adw_carousel_get_n_pages;
 alias c_adw_carousel_get_nth_page adw_carousel_get_nth_page;
 alias c_adw_carousel_get_position adw_carousel_get_position;
 alias c_adw_carousel_get_reveal_duration adw_carousel_get_reveal_duration;
+alias c_adw_carousel_get_scroll_params adw_carousel_get_scroll_params;
 alias c_adw_carousel_get_spacing adw_carousel_get_spacing;
 alias c_adw_carousel_insert adw_carousel_insert;
 alias c_adw_carousel_prepend adw_carousel_prepend;
 alias c_adw_carousel_remove adw_carousel_remove;
 alias c_adw_carousel_reorder adw_carousel_reorder;
 alias c_adw_carousel_scroll_to adw_carousel_scroll_to;
-alias c_adw_carousel_scroll_to_full adw_carousel_scroll_to_full;
 alias c_adw_carousel_set_allow_long_swipes adw_carousel_set_allow_long_swipes;
 alias c_adw_carousel_set_allow_mouse_drag adw_carousel_set_allow_mouse_drag;
 alias c_adw_carousel_set_allow_scroll_wheel adw_carousel_set_allow_scroll_wheel;
-alias c_adw_carousel_set_animation_duration adw_carousel_set_animation_duration;
 alias c_adw_carousel_set_interactive adw_carousel_set_interactive;
 alias c_adw_carousel_set_reveal_duration adw_carousel_set_reveal_duration;
+alias c_adw_carousel_set_scroll_params adw_carousel_set_scroll_params;
 alias c_adw_carousel_set_spacing adw_carousel_set_spacing;
 
 // adw.CarouselIndicatorDots
@@ -1483,8 +1694,8 @@ alias c_adw_flap_get_fold_threshold_policy adw_flap_get_fold_threshold_policy;
 alias c_adw_flap_get_folded adw_flap_get_folded;
 alias c_adw_flap_get_locked adw_flap_get_locked;
 alias c_adw_flap_get_modal adw_flap_get_modal;
-alias c_adw_flap_get_reveal_duration adw_flap_get_reveal_duration;
 alias c_adw_flap_get_reveal_flap adw_flap_get_reveal_flap;
+alias c_adw_flap_get_reveal_params adw_flap_get_reveal_params;
 alias c_adw_flap_get_reveal_progress adw_flap_get_reveal_progress;
 alias c_adw_flap_get_separator adw_flap_get_separator;
 alias c_adw_flap_get_swipe_to_close adw_flap_get_swipe_to_close;
@@ -1498,8 +1709,8 @@ alias c_adw_flap_set_fold_policy adw_flap_set_fold_policy;
 alias c_adw_flap_set_fold_threshold_policy adw_flap_set_fold_threshold_policy;
 alias c_adw_flap_set_locked adw_flap_set_locked;
 alias c_adw_flap_set_modal adw_flap_set_modal;
-alias c_adw_flap_set_reveal_duration adw_flap_set_reveal_duration;
 alias c_adw_flap_set_reveal_flap adw_flap_set_reveal_flap;
+alias c_adw_flap_set_reveal_params adw_flap_set_reveal_params;
 alias c_adw_flap_set_separator adw_flap_set_separator;
 alias c_adw_flap_set_swipe_to_close adw_flap_set_swipe_to_close;
 alias c_adw_flap_set_swipe_to_open adw_flap_set_swipe_to_open;
@@ -1529,11 +1740,11 @@ alias c_adw_leaflet_get_type adw_leaflet_get_type;
 alias c_adw_leaflet_new adw_leaflet_new;
 alias c_adw_leaflet_append adw_leaflet_append;
 alias c_adw_leaflet_get_adjacent_child adw_leaflet_get_adjacent_child;
-alias c_adw_leaflet_get_can_swipe_back adw_leaflet_get_can_swipe_back;
-alias c_adw_leaflet_get_can_swipe_forward adw_leaflet_get_can_swipe_forward;
+alias c_adw_leaflet_get_can_navigate_back adw_leaflet_get_can_navigate_back;
+alias c_adw_leaflet_get_can_navigate_forward adw_leaflet_get_can_navigate_forward;
 alias c_adw_leaflet_get_can_unfold adw_leaflet_get_can_unfold;
 alias c_adw_leaflet_get_child_by_name adw_leaflet_get_child_by_name;
-alias c_adw_leaflet_get_child_transition_duration adw_leaflet_get_child_transition_duration;
+alias c_adw_leaflet_get_child_transition_params adw_leaflet_get_child_transition_params;
 alias c_adw_leaflet_get_child_transition_running adw_leaflet_get_child_transition_running;
 alias c_adw_leaflet_get_fold_threshold_policy adw_leaflet_get_fold_threshold_policy;
 alias c_adw_leaflet_get_folded adw_leaflet_get_folded;
@@ -1549,10 +1760,10 @@ alias c_adw_leaflet_navigate adw_leaflet_navigate;
 alias c_adw_leaflet_prepend adw_leaflet_prepend;
 alias c_adw_leaflet_remove adw_leaflet_remove;
 alias c_adw_leaflet_reorder_child_after adw_leaflet_reorder_child_after;
-alias c_adw_leaflet_set_can_swipe_back adw_leaflet_set_can_swipe_back;
-alias c_adw_leaflet_set_can_swipe_forward adw_leaflet_set_can_swipe_forward;
+alias c_adw_leaflet_set_can_navigate_back adw_leaflet_set_can_navigate_back;
+alias c_adw_leaflet_set_can_navigate_forward adw_leaflet_set_can_navigate_forward;
 alias c_adw_leaflet_set_can_unfold adw_leaflet_set_can_unfold;
-alias c_adw_leaflet_set_child_transition_duration adw_leaflet_set_child_transition_duration;
+alias c_adw_leaflet_set_child_transition_params adw_leaflet_set_child_transition_params;
 alias c_adw_leaflet_set_fold_threshold_policy adw_leaflet_set_fold_threshold_policy;
 alias c_adw_leaflet_set_homogeneous adw_leaflet_set_homogeneous;
 alias c_adw_leaflet_set_mode_transition_duration adw_leaflet_set_mode_transition_duration;
@@ -1609,14 +1820,15 @@ alias c_adw_preferences_row_set_use_underline adw_preferences_row_set_use_underl
 alias c_adw_preferences_window_get_type adw_preferences_window_get_type;
 alias c_adw_preferences_window_new adw_preferences_window_new;
 alias c_adw_preferences_window_add adw_preferences_window_add;
+alias c_adw_preferences_window_add_toast adw_preferences_window_add_toast;
 alias c_adw_preferences_window_close_subpage adw_preferences_window_close_subpage;
-alias c_adw_preferences_window_get_can_swipe_back adw_preferences_window_get_can_swipe_back;
+alias c_adw_preferences_window_get_can_navigate_back adw_preferences_window_get_can_navigate_back;
 alias c_adw_preferences_window_get_search_enabled adw_preferences_window_get_search_enabled;
 alias c_adw_preferences_window_get_visible_page adw_preferences_window_get_visible_page;
 alias c_adw_preferences_window_get_visible_page_name adw_preferences_window_get_visible_page_name;
 alias c_adw_preferences_window_present_subpage adw_preferences_window_present_subpage;
 alias c_adw_preferences_window_remove adw_preferences_window_remove;
-alias c_adw_preferences_window_set_can_swipe_back adw_preferences_window_set_can_swipe_back;
+alias c_adw_preferences_window_set_can_navigate_back adw_preferences_window_set_can_navigate_back;
 alias c_adw_preferences_window_set_search_enabled adw_preferences_window_set_search_enabled;
 alias c_adw_preferences_window_set_visible_page adw_preferences_window_set_visible_page;
 alias c_adw_preferences_window_set_visible_page_name adw_preferences_window_set_visible_page_name;
@@ -1641,6 +1853,37 @@ alias c_adw_split_button_set_label adw_split_button_set_label;
 alias c_adw_split_button_set_menu_model adw_split_button_set_menu_model;
 alias c_adw_split_button_set_popover adw_split_button_set_popover;
 alias c_adw_split_button_set_use_underline adw_split_button_set_use_underline;
+
+// adw.SpringAnimation
+
+alias c_adw_spring_animation_get_type adw_spring_animation_get_type;
+alias c_adw_spring_animation_new adw_spring_animation_new;
+alias c_adw_spring_animation_get_clamp adw_spring_animation_get_clamp;
+alias c_adw_spring_animation_get_epsilon adw_spring_animation_get_epsilon;
+alias c_adw_spring_animation_get_estimated_duration adw_spring_animation_get_estimated_duration;
+alias c_adw_spring_animation_get_initial_velocity adw_spring_animation_get_initial_velocity;
+alias c_adw_spring_animation_get_spring_params adw_spring_animation_get_spring_params;
+alias c_adw_spring_animation_get_value_from adw_spring_animation_get_value_from;
+alias c_adw_spring_animation_get_value_to adw_spring_animation_get_value_to;
+alias c_adw_spring_animation_get_velocity adw_spring_animation_get_velocity;
+alias c_adw_spring_animation_set_clamp adw_spring_animation_set_clamp;
+alias c_adw_spring_animation_set_epsilon adw_spring_animation_set_epsilon;
+alias c_adw_spring_animation_set_initial_velocity adw_spring_animation_set_initial_velocity;
+alias c_adw_spring_animation_set_spring_params adw_spring_animation_set_spring_params;
+alias c_adw_spring_animation_set_value_from adw_spring_animation_set_value_from;
+alias c_adw_spring_animation_set_value_to adw_spring_animation_set_value_to;
+
+// adw.SpringParams
+
+alias c_adw_spring_params_get_type adw_spring_params_get_type;
+alias c_adw_spring_params_new adw_spring_params_new;
+alias c_adw_spring_params_new_full adw_spring_params_new_full;
+alias c_adw_spring_params_get_damping adw_spring_params_get_damping;
+alias c_adw_spring_params_get_damping_ratio adw_spring_params_get_damping_ratio;
+alias c_adw_spring_params_get_mass adw_spring_params_get_mass;
+alias c_adw_spring_params_get_stiffness adw_spring_params_get_stiffness;
+alias c_adw_spring_params_ref adw_spring_params_ref;
+alias c_adw_spring_params_unref adw_spring_params_unref;
 
 // adw.Squeezer
 
@@ -1791,7 +2034,6 @@ alias c_adw_tab_view_get_page adw_tab_view_get_page;
 alias c_adw_tab_view_get_page_position adw_tab_view_get_page_position;
 alias c_adw_tab_view_get_pages adw_tab_view_get_pages;
 alias c_adw_tab_view_get_selected_page adw_tab_view_get_selected_page;
-alias c_adw_tab_view_get_shortcut_widget adw_tab_view_get_shortcut_widget;
 alias c_adw_tab_view_insert adw_tab_view_insert;
 alias c_adw_tab_view_insert_pinned adw_tab_view_insert_pinned;
 alias c_adw_tab_view_prepend adw_tab_view_prepend;
@@ -1807,8 +2049,54 @@ alias c_adw_tab_view_set_default_icon adw_tab_view_set_default_icon;
 alias c_adw_tab_view_set_menu_model adw_tab_view_set_menu_model;
 alias c_adw_tab_view_set_page_pinned adw_tab_view_set_page_pinned;
 alias c_adw_tab_view_set_selected_page adw_tab_view_set_selected_page;
-alias c_adw_tab_view_set_shortcut_widget adw_tab_view_set_shortcut_widget;
 alias c_adw_tab_view_transfer_page adw_tab_view_transfer_page;
+
+// adw.TimedAnimation
+
+alias c_adw_timed_animation_get_type adw_timed_animation_get_type;
+alias c_adw_timed_animation_new adw_timed_animation_new;
+alias c_adw_timed_animation_get_alternate adw_timed_animation_get_alternate;
+alias c_adw_timed_animation_get_duration adw_timed_animation_get_duration;
+alias c_adw_timed_animation_get_easing adw_timed_animation_get_easing;
+alias c_adw_timed_animation_get_repeat_count adw_timed_animation_get_repeat_count;
+alias c_adw_timed_animation_get_reverse adw_timed_animation_get_reverse;
+alias c_adw_timed_animation_get_value_from adw_timed_animation_get_value_from;
+alias c_adw_timed_animation_get_value_to adw_timed_animation_get_value_to;
+alias c_adw_timed_animation_set_alternate adw_timed_animation_set_alternate;
+alias c_adw_timed_animation_set_duration adw_timed_animation_set_duration;
+alias c_adw_timed_animation_set_easing adw_timed_animation_set_easing;
+alias c_adw_timed_animation_set_repeat_count adw_timed_animation_set_repeat_count;
+alias c_adw_timed_animation_set_reverse adw_timed_animation_set_reverse;
+alias c_adw_timed_animation_set_value_from adw_timed_animation_set_value_from;
+alias c_adw_timed_animation_set_value_to adw_timed_animation_set_value_to;
+
+// adw.Toast
+
+alias c_adw_toast_get_type adw_toast_get_type;
+alias c_adw_toast_new adw_toast_new;
+alias c_adw_toast_dismiss adw_toast_dismiss;
+alias c_adw_toast_get_action_name adw_toast_get_action_name;
+alias c_adw_toast_get_action_target_value adw_toast_get_action_target_value;
+alias c_adw_toast_get_button_label adw_toast_get_button_label;
+alias c_adw_toast_get_priority adw_toast_get_priority;
+alias c_adw_toast_get_timeout adw_toast_get_timeout;
+alias c_adw_toast_get_title adw_toast_get_title;
+alias c_adw_toast_set_action_name adw_toast_set_action_name;
+alias c_adw_toast_set_action_target adw_toast_set_action_target;
+alias c_adw_toast_set_action_target_value adw_toast_set_action_target_value;
+alias c_adw_toast_set_button_label adw_toast_set_button_label;
+alias c_adw_toast_set_detailed_action_name adw_toast_set_detailed_action_name;
+alias c_adw_toast_set_priority adw_toast_set_priority;
+alias c_adw_toast_set_timeout adw_toast_set_timeout;
+alias c_adw_toast_set_title adw_toast_set_title;
+
+// adw.ToastOverlay
+
+alias c_adw_toast_overlay_get_type adw_toast_overlay_get_type;
+alias c_adw_toast_overlay_new adw_toast_overlay_new;
+alias c_adw_toast_overlay_add_toast adw_toast_overlay_add_toast;
+alias c_adw_toast_overlay_get_child adw_toast_overlay_get_child;
+alias c_adw_toast_overlay_set_child adw_toast_overlay_set_child;
 
 // adw.ViewStack
 
@@ -1819,16 +2107,13 @@ alias c_adw_view_stack_add_named adw_view_stack_add_named;
 alias c_adw_view_stack_add_titled adw_view_stack_add_titled;
 alias c_adw_view_stack_get_child_by_name adw_view_stack_get_child_by_name;
 alias c_adw_view_stack_get_hhomogeneous adw_view_stack_get_hhomogeneous;
-alias c_adw_view_stack_get_interpolate_size adw_view_stack_get_interpolate_size;
 alias c_adw_view_stack_get_page adw_view_stack_get_page;
 alias c_adw_view_stack_get_pages adw_view_stack_get_pages;
-alias c_adw_view_stack_get_transition_running adw_view_stack_get_transition_running;
 alias c_adw_view_stack_get_vhomogeneous adw_view_stack_get_vhomogeneous;
 alias c_adw_view_stack_get_visible_child adw_view_stack_get_visible_child;
 alias c_adw_view_stack_get_visible_child_name adw_view_stack_get_visible_child_name;
 alias c_adw_view_stack_remove adw_view_stack_remove;
 alias c_adw_view_stack_set_hhomogeneous adw_view_stack_set_hhomogeneous;
-alias c_adw_view_stack_set_interpolate_size adw_view_stack_set_interpolate_size;
 alias c_adw_view_stack_set_vhomogeneous adw_view_stack_set_vhomogeneous;
 alias c_adw_view_stack_set_visible_child adw_view_stack_set_visible_child;
 alias c_adw_view_stack_set_visible_child_name adw_view_stack_set_visible_child_name;

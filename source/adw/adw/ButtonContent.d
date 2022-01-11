@@ -36,11 +36,16 @@ private import gtk.Widget;
 /**
  * A helper widget for creating buttons.
  * 
+ * <picture>
+ * <source srcset="button-content-dark.png" media="(prefers-color-scheme: dark)">
+ * <img src="button-content.png" alt="button-content">
+ * </picture>
+ * 
  * `AdwButtonContent` is a box-like widget with an icon and a label.
  * 
  * It's intended to be used as a direct child of [class@Gtk.Button],
- * [class@Gtk.MenuButton] or [class@Adw.SplitButton], when they need to habe
- * both an icon and a label, as follows:
+ * [class@Gtk.MenuButton] or [class@SplitButton], when they need to have both an
+ * icon and a label, as follows:
  * 
  * ```xml
  * <object class="GtkButton">

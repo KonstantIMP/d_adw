@@ -27,7 +27,7 @@ private import gtk.Widget;
 
 
 /**
- * An auxiliary class used by [class@Adw.Leaflet].
+ * An auxiliary class used by [class@Leaflet].
  */
 public class LeafletPage : ObjectG
 {

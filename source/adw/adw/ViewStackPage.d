@@ -27,7 +27,7 @@ private import gtk.Widget;
 
 
 /**
- * An auxiliary class used by [class@Adw.ViewStack].
+ * An auxiliary class used by [class@ViewStack].
  *
  * Since: 1.0
  */

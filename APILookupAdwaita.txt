@@ -57,3 +57,7 @@ code: start
 		return adw_split_button_get_direction(adwSplitButton);
 	}
 code: end
+
+struct: SpringParams
+# conflicts with constructor
+noCode: new_full

@@ -16,107 +16,81 @@
  * along with d_adw; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
-module adw.EnumListModel;
+module adw.CallbackAnimationTarget;
 
+private import adw.AnimationTarget;
 private import adw.c.functions;
 public  import adw.c.types;
-private import gio.ListModelIF;
-private import gio.ListModelT;
 private import glib.ConstructionException;
 private import gobject.ObjectG;
 
 
 /**
- * A [iface@Gio.ListModel] representing values of a given enum.
- * 
- * `AdwEnumListModel` contains objects of type [class@EnumListItem].
+ * An [class@AnimationTarget] that calls a given callback during the
+ * animation.
  *
  * Since: 1.0
  */
-public class EnumListModel : ObjectG, ListModelIF
+public class CallbackAnimationTarget : AnimationTarget
 {
 	/** the main Gtk struct */
-	protected AdwEnumListModel* adwEnumListModel;
+	protected AdwCallbackAnimationTarget* adwCallbackAnimationTarget;
 
 	/** Get the main Gtk struct */
-	public AdwEnumListModel* getEnumListModelStruct(bool transferOwnership = false)
+	public AdwCallbackAnimationTarget* getCallbackAnimationTargetStruct(bool transferOwnership = false)
 	{
 		if (transferOwnership)
 			ownedRef = false;
-		return adwEnumListModel;
+		return adwCallbackAnimationTarget;
 	}
 
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct()
 	{
-		return cast(void*)adwEnumListModel;
+		return cast(void*)adwCallbackAnimationTarget;
 	}
 
 	/**
 	 * Sets our main struct and passes it to the parent class.
 	 */
-	public this (AdwEnumListModel* adwEnumListModel, bool ownedRef = false)
+	public this (AdwCallbackAnimationTarget* adwCallbackAnimationTarget, bool ownedRef = false)
 	{
-		this.adwEnumListModel = adwEnumListModel;
-		super(cast(GObject*)adwEnumListModel, ownedRef);
+		this.adwCallbackAnimationTarget = adwCallbackAnimationTarget;
+		super(cast(AdwAnimationTarget*)adwCallbackAnimationTarget, ownedRef);
 	}
-
-	// add the ListModel capabilities
-	mixin ListModelT!(AdwEnumListModel);
 
 
 	/** */
 	public static GType getType()
 	{
-		return adw_enum_list_model_get_type();
+		return adw_callback_animation_target_get_type();
 	}
 
 	/**
-	 * Creates a new `AdwEnumListModel` for @enum_type.
+	 * Creates a new `AdwAnimationTarget` that calls the given @callback during
+	 * the animation.
 	 *
 	 * Params:
-	 *     enumType = the type of the enum to construct the model from
+	 *     callback = the callback to call
+	 *     userData = the data to be passed to @callback
+	 *     destroy = the function to be called when the
+	 *         callback action is finalized
 	 *
-	 * Returns: the newly created `AdwEnumListModel`
+	 * Returns: the newly created callback target
 	 *
 	 * Since: 1.0
 	 *
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this(GType enumType)
+	public this(AdwAnimationTargetFunc callback, void* userData, GDestroyNotify destroy)
 	{
-		auto __p = adw_enum_list_model_new(enumType);
+		auto __p = adw_callback_animation_target_new(callback, userData, destroy);
 
 		if(__p is null)
 		{
 			throw new ConstructionException("null returned by new");
 		}
 
-		this(cast(AdwEnumListModel*) __p, true);
-	}
-
-	/**
-	 * Finds the position of a given enum value in @self.
-	 *
-	 * Params:
-	 *     value = an enum value
-	 *
-	 * Since: 1.0
-	 */
-	public uint findPosition(int value)
-	{
-		return adw_enum_list_model_find_position(adwEnumListModel, value);
-	}
-
-	/**
-	 * Gets the type of the enum represented by @self.
-	 *
-	 * Returns: the enum type
-	 *
-	 * Since: 1.0
-	 */
-	public GType getEnumType()
-	{
-		return adw_enum_list_model_get_enum_type(adwEnumListModel);
+		this(cast(AdwCallbackAnimationTarget*) __p, true);
 	}
 }

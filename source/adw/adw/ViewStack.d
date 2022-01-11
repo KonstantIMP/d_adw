@@ -36,38 +36,34 @@ private import gtk.Widget;
 
 
 /**
- * A view container for [class@Adw.ViewSwitcher].
+ * A view container for [class@ViewSwitcher].
  * 
  * `AdwViewStack` is a container which only shows one page at a time.
  * It is typically used to hold an application's main views.
  * 
  * It doesn't provide a way to transition between pages.
- * Instead, a separate widget such as [class@Adw.ViewSwitcher] can be used with
+ * Instead, a separate widget such as [class@ViewSwitcher] can be used with
  * `AdwViewStack` to provide this functionality.
  * 
  * `AdwViewStack` pages can have a title, an icon, an attention request, and a
- * numbered badge that [class@Adw.ViewSwitcher] will use to let users identify
- * which page is which.
- * Set them using the [property@Adw.ViewStackPage:title],
- * [property@Adw.ViewStackPage:icon-name],
- * [property@Adw.ViewStackPage:needs-attention], and
- * [property@Adw.ViewStackPage:badge-number] properties.
+ * numbered badge that [class@ViewSwitcher] will use to let users identify which
+ * page is which. Set them using the [property@ViewStackPage:title],
+ * [property@ViewStackPage:icon-name],
+ * [property@ViewStackPage:needs-attention], and
+ * [property@ViewStackPage:badge-number] properties.
  * 
- * Transitions between views are animated by crossfading.
- * These animations respect the [property@Gtk.Settings:gtk-enable-animations]
- * setting.
+ * Unlike [class@Gtk.Stack], transitions between views are not animated.
  * 
- * `AdwViewStack` maintains a [class@Adw.ViewStackPage] object for each added
- * child, which holds additional per-child properties.
- * You obtain the [class@Adw.ViewStackPage] for a child with
- * [method@Adw.ViewStack.get_page] and you can obtain a
- * [iface@Gtk.SelectionModel] containing all the pages with
- * [method@Adw.ViewStack.get_pages].
+ * `AdwViewStack` maintains a [class@ViewStackPage] object for each added child,
+ * which holds additional per-child properties. You obtain the
+ * [class@ViewStackPage] for a child with [method@ViewStack.get_page] and you
+ * can obtain a [iface@Gtk.SelectionModel] containing all the pages with
+ * [method@ViewStack.get_pages].
  * 
  * ## AdwViewStack as GtkBuildable
  * 
  * To set child-specific properties in a .ui file, create
- * [class@Adw.ViewStackPage] objects explicitly, and set the child widget as a
+ * [class@ViewStackPage] objects explicitly, and set the child widget as a
  * property on it:
  * 
  * ```xml
@@ -153,7 +149,7 @@ public class ViewStack : Widget
 	 * Params:
 	 *     child = the widget to add
 	 *
-	 * Returns: the [class@Adw.ViewStackPage] for @child
+	 * Returns: the [class@ViewStackPage] for @child
 	 *
 	 * Since: 1.0
 	 */
@@ -198,7 +194,7 @@ public class ViewStack : Widget
 	 * Adds a child to @self.
 	 *
 	 * The child is identified by the @name. The @title will be used by
-	 * [class@Adw.ViewSwitcher] to represent @child, so it should be short.
+	 * [class@ViewSwitcher] to represent @child, so it should be short.
 	 *
 	 * Params:
 	 *     child = the widget to add
@@ -256,19 +252,7 @@ public class ViewStack : Widget
 	}
 
 	/**
-	 * Gets whether @self will interpolate its size when changing the visible child.
-	 *
-	 * Returns: whether child sizes are interpolated
-	 *
-	 * Since: 1.0
-	 */
-	public bool getInterpolateSize()
-	{
-		return adw_view_stack_get_interpolate_size(adwViewStack) != 0;
-	}
-
-	/**
-	 * Gets the [class@Adw.ViewStackPage] object for @child.
+	 * Gets the [class@ViewStackPage] object for @child.
 	 *
 	 * Params:
 	 *     child = a child of @self
@@ -310,18 +294,6 @@ public class ViewStack : Widget
 		}
 
 		return ObjectG.getDObject!(SelectionModelIF)(cast(GtkSelectionModel*) __p, true);
-	}
-
-	/**
-	 * Gets whether the @self is currently in a transition from one page to another.
-	 *
-	 * Returns: whether a transition is currently running
-	 *
-	 * Since: 1.0
-	 */
-	public bool getTransitionRunning()
-	{
-		return adw_view_stack_get_transition_running(adwViewStack) != 0;
 	}
 
 	/**
@@ -391,19 +363,6 @@ public class ViewStack : Widget
 	public void setHhomogeneous(bool hhomogeneous)
 	{
 		adw_view_stack_set_hhomogeneous(adwViewStack, hhomogeneous);
-	}
-
-	/**
-	 * Sets whether @self will interpolate its size when changing the visible child.
-	 *
-	 * Params:
-	 *     interpolateSize = the new value
-	 *
-	 * Since: 1.0
-	 */
-	public void setInterpolateSize(bool interpolateSize)
-	{
-		adw_view_stack_set_interpolate_size(adwViewStack, interpolateSize);
 	}
 
 	/**

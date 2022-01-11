@@ -25,7 +25,7 @@ private import gtk.Widget;
 
 
 /**
- * An auxiliary class used by [class@Adw.Squeezer].
+ * An auxiliary class used by [class@Squeezer].
  */
 public class SqueezerPage : ObjectG
 {
